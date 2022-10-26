@@ -5,6 +5,7 @@ public class Player {
     private String name = "";
     private List<Dice> diceArrayList = new ArrayList<Dice>(8);
     private Card card = null;
+    private int score = 0;
 
     public Player (String name) {
         this.name = name;
@@ -37,5 +38,9 @@ public class Player {
 
     public List<Dice> getDiceList () {
         return this.diceArrayList;
+    }
+
+    public int getScore () {
+        return this.score;
     }
 }
