@@ -10,4 +10,8 @@ public class Dice {
     public Global.DiceSide getDice() {
         return this.side;
     }
+
+    public void roll () {
+        this.side = Global.randomEnum(Global.DiceSide.class);
+    }
 }
