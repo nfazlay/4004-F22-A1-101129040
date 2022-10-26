@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Player {
     private String name = "";
+    private List<Dice> diceArrayList = new ArrayList<Dice>(8);
     private Card card = null;
 
     public Player (String name) {
@@ -28,5 +29,10 @@ public class Player {
 
     public void setCard (Global.CardTypes cardType) {
         this.card = new Card(cardType);
+    }
+    
+
+    public List<Dice> getDiceList () {
+        return this.diceArrayList;
     }
 }
