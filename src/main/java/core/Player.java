@@ -47,4 +47,18 @@ public class Player {
     public void setScore (int score) {
         this.score = score;
     }
+
+    public void roll() {
+        for(int i =0; i < 8; i++) {
+            Dice d = new Dice();
+            d.roll();
+            diceArrayList.add(d);
+        }
+    }
+
+    public void roll(Integer[] positions) {
+        for (int i =0; i < positions.length; i++) {
+            diceArrayList.get(positions[i]).roll();
+        }
+    }
 }
