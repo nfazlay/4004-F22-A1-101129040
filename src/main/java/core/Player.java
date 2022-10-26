@@ -56,9 +56,27 @@ public class Player {
         }
     }
 
-    public void roll(Integer[] positions) {
+    public boolean reRoll(int[] positions) {
+        for (int i =0; i < positions.length; i++) {
+            if (diceArrayList.get(positions[i]).getDice() == Global.DiceSide.SKULL) {
+                return false;
+            }
+        }
         for (int i =0; i < positions.length; i++) {
             diceArrayList.get(positions[i]).roll();
         }
+        return true;
+    }
+
+    public boolean reRoll(int[] positions, Global.DiceSide[] diceArray) { // same functionality as reroll but for rigged version
+        for (int i =0; i < positions.length; i++) {
+            if (diceArrayList.get(positions[i]).getDice() == Global.DiceSide.SKULL) {
+                return false;
+            }
+        }
+        for (int i =0; i < positions.length; i++) {
+            diceArrayList.get(positions[i]).setDice(diceArray[i]);
+        }
+        return true;
     }
 }
