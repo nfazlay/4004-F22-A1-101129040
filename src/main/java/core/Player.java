@@ -30,7 +30,10 @@ public class Player {
     public void setCard (Global.CardTypes cardType) {
         this.card = new Card(cardType);
     }
-    
+
+    public void setDice (List<Dice> diceArrayList) {
+        this.diceArrayList = diceArrayList;
+    }
 
     public List<Dice> getDiceList () {
         return this.diceArrayList;
