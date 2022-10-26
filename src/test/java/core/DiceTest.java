@@ -8,4 +8,10 @@ public class DiceTest extends TestCase {
         dice.setDice(Global.DiceSide.DIAMOND);
         assertEquals(Global.DiceSide.DIAMOND, dice.getDice());
     }
+
+    public void testRoll() {
+        Dice dice = new Dice();
+        dice.roll();
+        assertNotNull(dice.getDice());
+    }
 }
