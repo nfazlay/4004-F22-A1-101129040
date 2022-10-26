@@ -36,4 +36,8 @@ public class PlayerTest extends TestCase {
         player.setDice(list);
         assertNotNull(player.getDiceList().get(0).getDice());
     }
+
+    public void testGetScore () {
+        assertEquals(0, player.getScore());
+    }
 }
