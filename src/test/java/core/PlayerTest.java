@@ -40,4 +40,9 @@ public class PlayerTest extends TestCase {
     public void testGetScore () {
         assertEquals(0, player.getScore());
     }
+
+    public void testSetScore () {
+        player.setScore(1000);
+        assertEquals(1000, player.getScore());
+    }
 }
