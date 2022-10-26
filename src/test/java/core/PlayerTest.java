@@ -2,16 +2,18 @@ package core;
 
 import core.Player;
 import junit.framework.TestCase;
+import java.util.*;
+
+import java.util.ArrayList;
 
 public class PlayerTest extends TestCase {
+    Player player = new Player("John Cena");
 
     public void testPlayer() {
-        Player player = new Player("John Cena");
         assertEquals("John Cena", player.getName());
     }
 
     public void testPlayerCard () {
-        Player player = new Player("John Cena");
         assertNull(player.getCard());
         player.pickCard();
         assertNotNull(player.getCard());
@@ -20,4 +22,9 @@ public class PlayerTest extends TestCase {
         player.setCard(Global.CardTypes.GOLD_CARD);
         assertNotNull(player.getCard());
     }
+
+    public void testGetDice () {
+        assertNotNull(player.getDiceList());
+    }
+
 }
