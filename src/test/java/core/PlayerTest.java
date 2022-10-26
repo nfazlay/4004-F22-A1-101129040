@@ -26,5 +26,14 @@ public class PlayerTest extends TestCase {
     public void testGetDice () {
         assertNotNull(player.getDiceList());
     }
-
+    public void testSetDice () {
+        List<Dice> list = new ArrayList<Dice>(8);
+        for(int i =0; i < 8; i++) {
+            Dice d = new Dice();
+            d.roll();
+            list.add(d);
+        }
+        player.setDice(list);
+        assertNotNull(player.getDiceList().get(0).getDice());
+    }
 }
