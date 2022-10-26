@@ -1,13 +1,13 @@
 package core;
 
 public class Dice {
-    int side;
+    Global.DiceSide side;
 
-    public void setDice(int side) {
+    public void setDice(Global.DiceSide side) {
         this.side = side;
     }
 
-    public int getDice() {
+    public Global.DiceSide getDice() {
         return this.side;
     }
 }
