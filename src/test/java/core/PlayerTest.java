@@ -45,4 +45,9 @@ public class PlayerTest extends TestCase {
         player.setScore(1000);
         assertEquals(1000, player.getScore());
     }
+
+    public void testRoll () {
+        player.roll();
+        assertFalse(player.getDiceList().isEmpty());
+    }
 }
