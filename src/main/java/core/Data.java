@@ -17,4 +17,12 @@ public abstract class Data {
         }
         return bos.toByteArray();
     }
+
+    public static Object fromByteArray(byte[] byteArr) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(byteArr);
+        ObjectInput in = new ObjectInputStream(bis);
+        return in.readObject();
+    }
 }
+
+
