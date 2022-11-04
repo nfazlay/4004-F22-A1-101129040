@@ -14,4 +14,9 @@ public class ClientServerTest extends TestCase {
 
         assertEquals(0, server.getPlayerList().size());
     }
+
+    public void testClient () {
+        PlayerClient client = new PlayerClient();
+        assertEquals(8080, client.getPort());
+    }
 }
