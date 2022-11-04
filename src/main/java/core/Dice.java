@@ -1,7 +1,10 @@
 package core;
 
-public class Dice {
-    Global.DiceSide side;
+
+import java.io.Serializable;
+
+public class Dice implements Serializable {
+    Global.DiceSide side = null;
 
     public void setDice(Global.DiceSide side) {
         this.side = side;
@@ -13,5 +16,10 @@ public class Dice {
 
     public void roll () {
         this.side = Global.randomEnum(Global.DiceSide.class);
+    }
+
+    @Override
+    public String toString() {
+        return side.name();
     }
 }
