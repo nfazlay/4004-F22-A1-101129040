@@ -14,4 +14,10 @@ public class DiceTest extends TestCase {
         dice.roll();
         assertNotNull(dice.getDice());
     }
+
+    public void testToString () {
+        Dice d = new Dice();
+        d.setDice(Global.DiceSide.SKULL);
+        assertEquals("SKULL", d.toString());
+    }
 }
