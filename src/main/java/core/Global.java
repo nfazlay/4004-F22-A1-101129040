@@ -16,4 +16,19 @@ public class Global {
         int x = r.nextInt(clazz.getEnumConstants().length);
         return clazz.getEnumConstants()[x];
     }
+
+    public static boolean printDiceList (List list) {
+        System.out.println("Dices:");
+        String format = "";
+        List<Integer> idx = new ArrayList<Integer>();
+        for (int i =0; i < list.size(); i++) {
+            idx.add(i);
+            format += "%10s";
+        }
+        format += "\n";
+        System.out.format(format,idx.toArray());
+        System.out.format(format,list.toArray());
+
+        return true;
+    }
 }
