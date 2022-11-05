@@ -1,8 +1,9 @@
 package core;
 import java.util.*;
 
-public class Player {
+public class Player implements Serializable {
     private String name = "";
+    private boolean islandOfSkulls;
     private List<Dice> diceArrayList = new ArrayList<Dice>(8);
     private Card card = null;
     private int score = 0;
@@ -46,6 +47,14 @@ public class Player {
 
     public void setScore (int score) {
         this.score = score;
+    }
+
+    public void setIslandOfSkulls (boolean b) {
+        this.islandOfSkulls = b;
+    }
+
+    public boolean getIslandOfSkulls () {
+        return this.islandOfSkulls;
     }
 
     public void roll() {
