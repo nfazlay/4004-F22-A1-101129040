@@ -84,4 +84,9 @@ public class PlayerTest extends TestCase {
         pos = new int [] {5,6,7};
         assertTrue(player.reRoll(pos));
     }
+
+    public void testIslandOfSkulls () {
+        player.setIslandOfSkulls(true);
+        assertTrue(player.getIslandOfSkulls());
+    }
 }
