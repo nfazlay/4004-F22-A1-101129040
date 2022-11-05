@@ -105,6 +105,16 @@ public class Player implements Serializable {
         return true;
     }
 
+    public int checkSkulls (List<Dice> list) {
+        int count  = 0;
+        for (int i =0; i < list.size(); i ++) {
+            if (list.get(i).getDice() == Global.DiceSide.SKULL) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public boolean reRoll(int[] positions, Global.DiceSide[] diceArray) { // same functionality as reroll but for rigged version
         for (int position : positions) {
             if (diceArrayList.get(position).getDice() == Global.DiceSide.SKULL) {
