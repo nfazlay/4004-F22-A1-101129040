@@ -33,6 +33,9 @@ public class Player implements Serializable {
         else if (cardType == Global.CardTypes.SKULLS_CARD) {
             this.card = new Skulls(cardType);
         }
+        else if (cardType == Global.CardTypes.BATTLE) {
+            this.card = new SeaBattle(cardType);
+        }
         else {
             this.card = new Card(cardType);
         }
