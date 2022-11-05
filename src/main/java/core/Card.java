@@ -17,6 +17,9 @@ public class Card implements Serializable {
     public void addDice (Dice d) {}
 
     protected boolean usedCard;
+    protected int numSkulls;
+    protected void setNumSkulls(int s) {};
+    protected int getNumSkulls() {return -1;};
 
     public List<Dice> getList() {
         return null;

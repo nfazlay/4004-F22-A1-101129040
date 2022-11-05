@@ -23,12 +23,15 @@ public class Player implements Serializable {
     }
     
     public void pickCard () {
-        Global.CardTypes cardType = Global.CardTypes.SOCERESS;
+        Global.CardTypes cardType = Global.CardTypes.SKULLS_CARD;
         if (cardType == Global.CardTypes.CHEST) {
             this.card = new TreasureChest(cardType);
         }
         else if (cardType == Global.CardTypes.SOCERESS) {
             this.card = new Sorceres(cardType);
+        }
+        else if (cardType == Global.CardTypes.SKULLS_CARD) {
+            this.card = new Skulls(cardType);
         }
         else {
             this.card = new Card(cardType);
@@ -210,7 +213,7 @@ public class Player implements Serializable {
         System.out.println("Rolling the first dice");
         this.roll();
         Global.printDiceList(diceArrayList);
-        int numSkulls = checkSkulls(diceArrayList);
+        int numSkulls = checkSkulls(diceArrayList) + (cardType == Global.CardTypes.SKULLS_CARD? card.getNumSkulls() : 0);
         if (numSkulls > 3 && cardType != Global.CardTypes.BATTLE) {
             System.out.println("You have entered the island of skulls");
             islandOfSkulls = true;
@@ -218,7 +221,7 @@ public class Player implements Serializable {
 
         while (true) {
             if (cardType == Global.CardTypes.SOCERESS && card.usedCard == false) {
-                System.out.print("Do you want to use sorceres power? \"Yes\" or \"No\" : ");
+                System.out.print("Do you want to use sorceress power? \"Yes\" or \"No\" : ");
                 userResponse = sc.nextLine();
                 if (userResponse.equals("Yes")) {
                     card.usedCard = true;
@@ -262,7 +265,7 @@ public class Player implements Serializable {
                 Global.printDiceList(diceArrayList);
                 break;
             }
-            numSkulls = checkSkulls(diceArrayList);
+            numSkulls = checkSkulls(diceArrayList) + (cardType == Global.CardTypes.SKULLS_CARD? card.getNumSkulls() : 0);
             Global.printDiceList(diceArrayList);
         }
     }
