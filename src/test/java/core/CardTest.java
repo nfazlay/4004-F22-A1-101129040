@@ -10,7 +10,7 @@ public class CardTest extends TestCase {
     }
 
     public void testTreasureChest () {
-        TreasureChest tc = new TreasureChest(Global.CardTypes.CHEST);
+        Card tc = new TreasureChest(Global.CardTypes.CHEST);
         Dice d = new Dice();
         d.setDice(Global.DiceSide.GOLD);
         tc.addDice(d);

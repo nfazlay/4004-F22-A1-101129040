@@ -11,10 +11,12 @@ public class TreasureChest extends Card {
         super(type);
     }
 
+    @Override
     public void addDice (Dice d) {
         diceArrayList.add(d);
     }
 
+    @Override
     public List<Dice> getList () {
         return diceArrayList;
     }
