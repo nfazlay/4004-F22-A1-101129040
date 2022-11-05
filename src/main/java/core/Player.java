@@ -23,21 +23,22 @@ public class Player implements Serializable {
     }
     
     public void pickCard () {
-        Global.CardTypes cardType = Global.CardTypes.SKULLS_CARD;
-        if (cardType == Global.CardTypes.CHEST) {
-            this.card = new TreasureChest(cardType);
-        }
-        else if (cardType == Global.CardTypes.SOCERESS) {
-            this.card = new Sorceres(cardType);
-        }
-        else if (cardType == Global.CardTypes.SKULLS_CARD) {
-            this.card = new Skulls(cardType);
-        }
-        else if (cardType == Global.CardTypes.BATTLE) {
-            this.card = new SeaBattle(cardType);
-        }
-        else {
-            this.card = new Card(cardType);
+        Global.CardTypes cardType = Global.randomEnum(Global.CardTypes.class);
+        switch (cardType) {
+            case CHEST:
+                this.card = new TreasureChest(cardType);
+                break;
+            case SOCERESS:
+                this.card = new Sorceres(cardType);
+                break;
+            case SKULLS_CARD:
+                this.card = new Skulls(cardType);
+                break;
+            case BATTLE:
+                this.card = new SeaBattle(cardType);
+                break;
+            default:
+                this.card = new Card(cardType);
         }
     }
 
@@ -170,18 +171,23 @@ public class Player implements Serializable {
 
     public boolean keepTOChest (Scanner sc) {
         System.out.print("Please select which dice to set aside. For example: 1 will set aside 1st dice: ");
-        String[] numberStrs = sc.nextLine().split(",");
-        int[] numbers = new int[numberStrs.length];
-        for(int i = 0;i < numberStrs.length;i++)
-        {
-            numbers[i] = Integer.parseInt(numberStrs[i]);
-        }
-        if (numbers.length != 1) {
-            System.out.println("Select only one dice");
-            return false;
-        }
-        else if (!this.setAside(numbers)) {
-            System.out.println("Sorry you are trying to set aside a skull or dice already set aside. Please try again");
+        try {
+            String[] numberStrs = sc.nextLine().split(",");
+            int[] numbers = new int[numberStrs.length];
+            for(int i = 0;i < numberStrs.length;i++)
+            {
+                numbers[i] = Integer.parseInt(numberStrs[i]);
+            }
+            if (numbers.length != 1) {
+                System.out.println("Select only one dice");
+                return false;
+            }
+            else if (!this.setAside(numbers)) {
+                System.out.println("Sorry you are trying to set aside a skull or dice already set aside. Please try again");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Please try again");
             return false;
         }
         return true;
@@ -189,18 +195,21 @@ public class Player implements Serializable {
 
     public boolean rollPlay (Scanner sc) {
         System.out.print("Please select which dice to re-roll. For example: 1,3,4,5 will roll 1st, 3rd, 4th and 5th dice: ");
-        String[] numberStrs = sc.nextLine().split(",");
-        int[] numbers = new int[numberStrs.length];
-        for(int i = 0;i < numberStrs.length;i++)
-        {
-            numbers[i] = Integer.parseInt(numberStrs[i]);
-        }
-        if (numbers.length < 2 || numbers.length > 8) {
-            System.out.println("Range should be between 2<=x<=8");
-            return false;
-        }
-        else if (!this.reRoll(numbers)) {
-            System.out.println("Sorry you are trying to reroll a skull or a set asid dice. Please try again");
+        try {
+            String[] numberStrs = sc.nextLine().split(",");
+            int[] numbers = new int[numberStrs.length];
+            for (int i = 0; i < numberStrs.length; i++) {
+                numbers[i] = Integer.parseInt(numberStrs[i]);
+            }
+            if (numbers.length < 2 || numbers.length > 8) {
+                System.out.println("Range should be between 2<=x<=8");
+                return false;
+            } else if (!this.reRoll(numbers)) {
+                System.out.println("Sorry you are trying to reroll a skull or a set asid dice. Please try again");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Please try again");
             return false;
         }
         return true;
