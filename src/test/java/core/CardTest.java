@@ -8,4 +8,13 @@ public class CardTest extends TestCase {
         Card card = new Card(Global.CardTypes.BATTLE);
         assertEquals(Global.CardTypes.BATTLE, card.getType());
     }
+
+    public void testTreasureChest () {
+        TreasureChest tc = new TreasureChest(Global.CardTypes.CHEST);
+        Dice d = new Dice();
+        d.setDice(Global.DiceSide.GOLD);
+        tc.addDice(d);
+        Dice dt = tc.getList().get(0);
+        assertEquals(Global.DiceSide.GOLD, dt.getDice());
+    }
 }
