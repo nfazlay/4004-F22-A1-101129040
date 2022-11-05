@@ -28,4 +28,10 @@ public class CardTest extends TestCase {
         tc.setNumSkulls(2);
         assertEquals(2, tc.getNumSkulls());
     }
+
+    public void testSeaBattle () {
+        Card tc = new SeaBattle(Global.CardTypes.BATTLE);
+        assertTrue(tc.getSwordPoints() == 500 || tc.getSwordPoints() == 1000);
+        assertTrue(tc.getNumSwords() == 4 || tc.getNumSwords() == 5);
+    }
 }
