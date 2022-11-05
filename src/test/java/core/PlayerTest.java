@@ -2,6 +2,9 @@ package core;
 
 import core.Player;
 import junit.framework.TestCase;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 import java.util.ArrayList;
@@ -119,5 +122,42 @@ public class PlayerTest extends TestCase {
 
         int skulls = player.checkSkulls(diceArray);
         assertEquals(3, skulls);
+    }
+
+    public void testCountPoints () {
+        List<Dice> diceArray= new ArrayList<Dice>(8);
+        Dice d1 = new Dice();
+        d1.setDice(Global.DiceSide.SKULL);
+        diceArray.add(d1);
+        Dice d2 = new Dice();
+        d2.setDice(Global.DiceSide.SKULL);
+        diceArray.add(d2);
+        Dice d3 = new Dice();
+        d3.setDice(Global.DiceSide.SKULL);
+        diceArray.add(d3);
+        Dice d4 = new Dice();
+        d4.setDice(Global.DiceSide.PARROT);
+        diceArray.add(d4);
+        Dice d5 = new Dice();
+        d5.setDice(Global.DiceSide.GOLD);
+        diceArray.add(d5);
+        Dice d6 = new Dice();
+        d6.setDice(Global.DiceSide.DIAMOND);
+        diceArray.add(d6);
+        Dice d7 = new Dice();
+        d7.setDice(Global.DiceSide.SWORD);
+        diceArray.add(d7);
+        Dice d8 = new Dice();
+        d8.setDice(Global.DiceSide.MONKEY);
+        diceArray.add(d8);
+
+        Card c = new Card(Global.CardTypes.CHEST);
+
+        int points  = player.countPoints(diceArray, c, true);
+        assertEquals(300, points);
+
+        c = new Card(Global.CardTypes.CAPTAIN);
+        points  = player.countPoints(diceArray, c, true);
+        assertEquals(600, points);
     }
 }
