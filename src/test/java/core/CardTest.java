@@ -21,6 +21,11 @@ public class CardTest extends TestCase {
     public void testSorceres () {
         Card tc = new Sorceres(Global.CardTypes.SOCERESS);
         assertFalse(tc.usedCard);
+    }
 
+    public void testSkulls () {
+        Card tc = new Skulls(Global.CardTypes.SKULLS_CARD);
+        tc.setNumSkulls(2);
+        assertEquals(2, tc.getNumSkulls());
     }
 }
