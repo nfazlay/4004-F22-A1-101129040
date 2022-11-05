@@ -17,4 +17,10 @@ public class CardTest extends TestCase {
         Dice dt = tc.getList().get(0);
         assertEquals(Global.DiceSide.GOLD, dt.getDice());
     }
+
+    public void testSorceres () {
+        Card tc = new Sorceres(Global.CardTypes.SOCERESS);
+        assertFalse(tc.usedCard);
+
+    }
 }
