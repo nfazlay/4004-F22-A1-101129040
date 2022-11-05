@@ -23,9 +23,12 @@ public class Player implements Serializable {
     }
     
     public void pickCard () {
-        Global.CardTypes cardType = Global.randomEnum(Global.CardTypes.class);
+        Global.CardTypes cardType = Global.CardTypes.SOCERESS;
         if (cardType == Global.CardTypes.CHEST) {
             this.card = new TreasureChest(cardType);
+        }
+        else if (cardType == Global.CardTypes.SOCERESS) {
+            this.card = new Sorceres(cardType);
         }
         else {
             this.card = new Card(cardType);
@@ -140,6 +143,25 @@ public class Player implements Serializable {
         return true;
     }
 
+    public boolean rollSorceres (Scanner sc, List<Dice> diceArray) {
+        System.out.print("Please select which dice to reroll or -1 to exit. For example: 1 will set reroll 1st dice: ");
+        int number = Integer.parseInt(sc.nextLine());
+        if (number == -1) {
+            return true;
+        }
+        try {
+            if (diceArray.get(number).getDice() != Global.DiceSide.SKULL) {
+                System.out.println("Please select a skull. Try again");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Please try again");
+            return false;
+        }
+        diceArray.get(number).roll();
+        return true;
+    }
+
     public boolean keepTOChest (Scanner sc) {
         System.out.print("Please select which dice to set aside. For example: 1 will set aside 1st dice: ");
         String[] numberStrs = sc.nextLine().split(",");
@@ -195,12 +217,21 @@ public class Player implements Serializable {
         }
 
         while (true) {
+            if (cardType == Global.CardTypes.SOCERESS && card.usedCard == false) {
+                System.out.print("Do you want to use sorceres power? \"Yes\" or \"No\" : ");
+                userResponse = sc.nextLine();
+                if (userResponse.equals("Yes")) {
+                    card.usedCard = true;
+                    while(!rollSorceres(sc, diceArrayList)) {}
+                    Global.printDiceList(diceArrayList);
+                }
+            }
             System.out.println("Num skulls: " + numSkulls);
-            if (numSkulls >= 3 && !islandOfSkulls) {
+            if (numSkulls >= 3 && !islandOfSkulls) { //Turn over because got more skulls
                 System.out.println("You got three skulls. Turn Over");
                 break;
             }
-            if (cardType == Global.CardTypes.CHEST) {
+            if (cardType == Global.CardTypes.CHEST) { // Keeping dice in chest
                 System.out.print("Do you want set aside dice? \"Yes\" or \"No\" : ");
                 userResponse = sc.nextLine();
                 if (userResponse.equals("Yes")) {
