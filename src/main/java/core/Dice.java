@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Dice implements Serializable {
     Global.DiceSide side = null;
+    public boolean setAside = false;
 
     public void setDice(Global.DiceSide side) {
         this.side = side;
