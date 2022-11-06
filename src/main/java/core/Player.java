@@ -126,6 +126,15 @@ public class Player implements Serializable {
         return count;
     }
 
+    public int islandOfSkullsPoints (List diceArray, Card card) {
+        int points = 0;
+        points = checkSkulls(diceArray)*100;
+        if (card.getType() == Global.CardTypes.CAPTAIN) {
+            points = points * 2;
+        }
+        return points;
+    }
+
     public int countPoints (List diceArray, Card card, boolean islandOfSkulls) {
         int points = 0;
         if(islandOfSkulls) {
