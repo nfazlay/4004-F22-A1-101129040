@@ -162,6 +162,15 @@ public class Player implements Serializable {
         return true;
     }
 
+    public boolean died (List<Dice> d, Card c, boolean islandOfSkulls) {
+        int numSkulls = checkSkulls(d) + (c.getType() == Global.CardTypes.SKULLS_CARD? c.getNumSkulls() : 0);
+        if (numSkulls >= 3 && !islandOfSkulls) { //Turn over because got more skulls
+            System.out.println(name +": " + "You got three skulls. Turn Over");
+            return true;
+        }
+        return false;
+    }
+
     public boolean rollSorceres (Scanner sc, List<Dice> diceArray) {
         System.out.print(name +": " + "Please select which dice to reroll or -1 to exit. For example: 1 will set reroll 1st dice: ");
         int number = Integer.parseInt(sc.nextLine());
