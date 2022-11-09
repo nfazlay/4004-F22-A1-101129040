@@ -1,11 +1,16 @@
 package core;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class ClientServerTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+public class ClientServerTest {
+
+
+    @Test
     public void testClientServer () throws IOException, InterruptedException, ClassNotFoundException {
 
         final GameServer server = new GameServer(8080);
@@ -15,6 +20,7 @@ public class ClientServerTest extends TestCase {
         assertEquals(0, server.getPlayerList().size());
     }
 
+    @Test
     public void testClient () {
         PlayerClient client = new PlayerClient();
         assertEquals(8080, client.getPort());

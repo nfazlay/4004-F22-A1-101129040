@@ -1,14 +1,18 @@
 package core;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameTest extends TestCase {
+public class GameTest {
 
     Game game = new Game();
 
+    @Test
     public void testCheckSkulls () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         Dice d1 = new Dice();

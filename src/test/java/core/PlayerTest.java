@@ -1,7 +1,10 @@
 package core;
 
 import core.Player;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -9,13 +12,16 @@ import java.util.*;
 
 import java.util.ArrayList;
 
-public class PlayerTest extends TestCase {
+public class PlayerTest {
     Player player = new Player("John Cena");
 
+
+    @Test
     public void testPlayer() {
         assertEquals("John Cena", player.getName());
     }
 
+    @Test
     public void testPlayerCard () {
         assertNull(player.getCard());
         player.pickCard();
@@ -26,9 +32,12 @@ public class PlayerTest extends TestCase {
         assertNotNull(player.getCard());
     }
 
+    @Test
     public void testGetDice () {
         assertNotNull(player.getDiceList());
     }
+
+    @Test
     public void testSetDice () {
         List<Dice> list = new ArrayList<Dice>(8);
         for(int i =0; i < 8; i++) {
@@ -40,20 +49,24 @@ public class PlayerTest extends TestCase {
         assertNotNull(player.getDiceList().get(0).getDice());
     }
 
+    @Test
     public void testGetScore () {
         assertEquals(0, player.getScore());
     }
 
+    @Test
     public void testSetScore () {
         player.setScore(1000);
         assertEquals(1000, player.getScore());
     }
 
+    @Test
     public void testRoll () {
         player.roll();
         assertFalse(player.getDiceList().isEmpty());
     }
 
+    @Test
     public void testReRoll () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         int[] pos = new int[] {1,2,3,4};
@@ -88,12 +101,14 @@ public class PlayerTest extends TestCase {
         assertTrue(player.reRoll(pos));
     }
 
+    @Test
     public void testIslandOfSkulls () {
         player.setIslandOfSkulls(true);
         assertTrue(player.getIslandOfSkulls());
     }
 
-    public void testCheckSkulls () {
+    @Test
+    public void testCheckNumSide () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         Dice d1 = new Dice();
         d1.setDice(Global.DiceSide.SKULL);
@@ -120,10 +135,11 @@ public class PlayerTest extends TestCase {
         d8.setDice(Global.DiceSide.MONKEY);
         diceArray.add(d8);
 
-        int skulls = player.checkSkulls(diceArray);
+        int skulls = player.checkNumSide(diceArray, Global.DiceSide.SKULL);
         assertEquals(3, skulls);
     }
 
+    @Test
     public void testIslandOfSkullsPoints () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         Dice d1 = new Dice();
@@ -161,6 +177,7 @@ public class PlayerTest extends TestCase {
         assertEquals(600, points);
     }
 
+    @Test
     public void testCountPoints () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         Dice d1 = new Dice();
@@ -190,14 +207,15 @@ public class PlayerTest extends TestCase {
 
         Card c = new Card(Global.CardTypes.CHEST);
 
-        int points  = player.countPoints(diceArray, c, true);
+        int points  = player.countPoints(diceArray, c);
         assertEquals(300, points);
 
         c = new Card(Global.CardTypes.CAPTAIN);
-        points  = player.countPoints(diceArray, c, true);
+        points  = player.countPoints(diceArray, c);
         assertEquals(600, points);
     }
 
+    @Test
     public void testDied () {
         List<Dice> diceArray= new ArrayList<Dice>(8);
         Dice d1 = new Dice();
