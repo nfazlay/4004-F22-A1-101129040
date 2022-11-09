@@ -175,6 +175,16 @@ public class Player implements Serializable {
         return points;
     }
 
+    public boolean checkSeaBattle (List<Dice> l, Card card) {
+        if (card.getType() == Global.CardTypes.BATTLE) {
+            int numSword = checkNumSide(l, Global.DiceSide.SWORD);
+            if (card.getNumSwords() != numSword) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean reRoll(int[] positions, Global.DiceSide[] diceArray) { // same functionality as reroll but for rigged version
         for (int position : positions) {
             if (diceArrayList.get(position).getDice() == Global.DiceSide.SKULL) {
