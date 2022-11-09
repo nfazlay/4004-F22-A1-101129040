@@ -252,4 +252,11 @@ public class PlayerTest {
 
         assertTrue(player.died(diceArray, c, false));
     }
+
+    @Test
+    public void testDeductScore () {
+        player.setScore(400);
+        player.deductScore(200);
+        assertEquals(player.getScore(), 200);
+    }
 }
