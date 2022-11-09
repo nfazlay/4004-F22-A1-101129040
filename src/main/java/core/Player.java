@@ -70,6 +70,10 @@ public class Player implements Serializable {
         this.score = score;
     }
 
+    public void deductScore (int s) {
+        this.score = this.score - s;
+    }
+
     public void setIslandOfSkulls (boolean b) {
         this.islandOfSkulls = b;
     }
