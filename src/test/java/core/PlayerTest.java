@@ -259,4 +259,10 @@ public class PlayerTest {
         player.deductScore(200);
         assertEquals(player.getScore(), 200);
     }
+
+    @Test
+    public void TestPickCard () {
+        player.pickCard(Global.CardTypes.SOCERESS);
+        assertEquals(player.getCard().getType(), Global.CardTypes.SOCERESS);
+    }
 }
