@@ -42,6 +42,26 @@ public class Player implements Serializable {
         }
     }
 
+    public void pickCard (Global.CardTypes c) {
+        Global.CardTypes cardType = c;
+        switch (cardType) {
+            case CHEST:
+                this.card = new TreasureChest(cardType);
+                break;
+            case SOCERESS:
+                this.card = new Sorceres(cardType);
+                break;
+            case SKULLS_CARD:
+                this.card = new Skulls(cardType);
+                break;
+            case BATTLE:
+                this.card = new SeaBattle(cardType);
+                break;
+            default:
+                this.card = new Card(cardType);
+        }
+    }
+
     public void clearCard () {
         this.card = null;
     }
