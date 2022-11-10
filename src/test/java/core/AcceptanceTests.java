@@ -57,4 +57,19 @@ public class AcceptanceTests {
         p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{SKULL, MONKEY});
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
     }
+
+    @Test
+    public void test50 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,SWORD,SWORD,SWORD,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{1, 2}, new Global.DiceSide[]{GOLD, GOLD});
+        p.reRoll(new int[]{3, 4, 5}, new Global.DiceSide[]{GOLD, GOLD, GOLD});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+
 }
