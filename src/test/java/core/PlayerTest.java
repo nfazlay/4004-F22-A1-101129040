@@ -281,4 +281,13 @@ public class PlayerTest {
 
         assertTrue(player.checkSeaBattle(diceArray, c));
     }
+
+    @Test
+    public void testFullHouse () {
+        Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        player.setDice(dices);
+        player.pickCard();
+        assertEquals(500, player.checkFullHouse(dices, player.getCard()));
+    }
 }
