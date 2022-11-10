@@ -350,4 +350,27 @@ public class AcceptanceTests {
         p.setDice(dices);
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1100);
     }
+
+    @Test
+    public void test83 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.MONKEY_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SWORD,SWORD,PARROT,PARROT,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{2,3}, new Global.DiceSide[]{MONKEY, PARROT});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1700);
+    }
+
+    @Test
+    public void test84 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.MONKEY_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY,PARROT,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
 }
