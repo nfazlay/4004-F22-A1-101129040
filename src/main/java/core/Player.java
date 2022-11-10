@@ -194,11 +194,22 @@ public class Player implements Serializable {
             countMap.put(Global.DiceSide.DIAMOND, countMap.get(Global.DiceSide.DIAMOND) + 1);
         }
 
+        if (card.getType() == Global.CardTypes.MONKEY_CARD) {
+            points += (Global.identicalPoints.get(countMap.get(Global.DiceSide.MONKEY)
+                    + (countMap.get(Global.DiceSide.PARROT))));
+            System.out.println("Added points for Monkey card" + points);
+        }
+        else {
+            points += (Global.identicalPoints.get(countMap.get(Global.DiceSide.MONKEY))
+                    + Global.identicalPoints.get((countMap.get(Global.DiceSide.PARROT))));
+            System.out.println("Added points for not Monkey card" + points);
+        }
+
         for (Global.DiceSide d: countMap.keySet()) {
-            points += Global.identicalPoints.get(countMap.get(d));
-            System.out.println("Added points for sets of " + d + " " + points);
-//            if (d != Global.DiceSide.MONKEY && d != Global.DiceSide.PARROT && d != Global.DiceSide.SKULL) {
-//            }
+            if (d != Global.DiceSide.MONKEY && d != Global.DiceSide.PARROT && d != Global.DiceSide.SKULL) {
+                points += Global.identicalPoints.get(countMap.get(d));
+                System.out.println("Added points for sets of " + d + " " + points);
+            }
         }
 
         points += (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)) * 100;
