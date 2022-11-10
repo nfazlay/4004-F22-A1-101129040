@@ -160,17 +160,44 @@ public class Player implements Serializable {
         return points;
     }
 
-    public int countPoints (List diceArray, Card card, boolean islandOfSkulls) {
+    public int treasureChestPoints (Card c) {
+        int point = 0;
+        Map<Global.DiceSide, Integer> countMap = Global.countIdentical(c.getList());
+
+        return point;
+    }
+
+    public int checkFullHouse (List<Dice> l, Card c) {
+        int score = 0;
+        if (checkNumSide(l, Global.DiceSide.SKULL) == 0 ) {
+            score = 0;
+        }
+        else {
+            List<Dice> temp = new ArrayList<Dice>();
+            for(Dice d: l) {
+                if (d.getDice() != Global.DiceSide.GOLD || d.getDice() != Global.DiceSide.DIAMOND) {
+                    temp.add(d);
+                }
+            }
+        }
+        return score;
+    }
+
+    public int countPoints (List diceArray, Card card) {
+        if (died(diceArray,card, islandOfSkulls)) {
+            return 0;
+        }
         int points = 0;
         if(islandOfSkulls) {
-            points = checkSkulls(diceArray)*100;
+            points = checkNumSide(diceArray, Global.DiceSide.SKULL)*100;
         }
         else {
             // count number of identical objects
             // Add to diamond or gold coins
         }
         if (card.getType() == Global.CardTypes.CAPTAIN) {
-            points = points*2;
+            points = points * 2;
+            System.out.println("Added points for Captain " + points);
         }
         return points;
     }
@@ -214,7 +241,6 @@ public class Player implements Serializable {
             if (number == -1) {
                 return true;
             }
-        try {
             if (diceArray.get(number).getDice() != Global.DiceSide.SKULL) {
                 System.out.println(name +": " + "Please select a skull. Try again");
                 return false;
@@ -272,7 +298,6 @@ public class Player implements Serializable {
         }
         return true;
     }
-
 
     public void play () {
         Scanner sc = new Scanner(System.in);
