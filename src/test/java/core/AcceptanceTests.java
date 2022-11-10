@@ -68,7 +68,7 @@ public class AcceptanceTests {
         p.setDice(dices);
         p.reRoll(new int[]{1, 2}, new Global.DiceSide[]{GOLD, GOLD});
         p.reRoll(new int[]{3, 4, 5}, new Global.DiceSide[]{GOLD, GOLD, GOLD});
-        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 4800);
     }
 
 
