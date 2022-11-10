@@ -3,6 +3,7 @@ package core;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static core.Global.DiceSide.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
@@ -44,7 +45,7 @@ public class GlobalTest {
         d4.setDice(Global.DiceSide.PARROT);
         diceArray.add(d4);
         Dice d5 = new Dice();
-        d5.setDice(Global.DiceSide.GOLD);
+        d5.setDice(GOLD);
         diceArray.add(d5);
         Dice d6 = new Dice();
         d6.setDice(Global.DiceSide.DIAMOND);
@@ -59,5 +60,13 @@ public class GlobalTest {
         Map testMap = Global.countIdentical(diceArray);
         System.out.println(testMap);
         assertEquals(testMap.get(Global.DiceSide.SKULL), 3);
+    }
+
+    @Test
+    public void testCreateDiceList () {
+        Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,SKULL,PARROT,MONKEY,SKULL};
+        List<Dice> diceArray= Global.createDiceList(ds);
+
+        assertEquals(diceArray.size(), 8);
     }
 }
