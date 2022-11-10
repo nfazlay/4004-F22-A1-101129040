@@ -213,11 +213,6 @@ public class Player implements Serializable {
     }
 
     public boolean reRoll(int[] positions, Global.DiceSide[] diceArray) { // same functionality as reroll but for rigged version
-        for (int position : positions) {
-            if (diceArrayList.get(position).getDice() == Global.DiceSide.SKULL) {
-                return false;
-            }
-        }
         for (int i =0; i < positions.length; i++) {
             diceArrayList.get(positions[i]).setDice(diceArray[i]);
         }
