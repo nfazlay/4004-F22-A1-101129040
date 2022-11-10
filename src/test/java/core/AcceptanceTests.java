@@ -313,4 +313,31 @@ public class AcceptanceTests {
         p.reRoll(new int[]{5}, new Global.DiceSide[]{MONKEY});
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 500);
     }
+
+    @Test
+    public void test78 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.SOCERESS);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,PARROT,PARROT,PARROT,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{0}, new Global.DiceSide[]{PARROT});
+        p.reRoll(new int[]{6,7}, new Global.DiceSide[]{PARROT, PARROT});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1000);
+    }
+
+    @Test
+    public void test79 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.SOCERESS);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{5,6,7}, new Global.DiceSide[]{SKULL, PARROT, PARROT});
+        p.reRoll(new int[]{5}, new Global.DiceSide[]{PARROT});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 2000);
+    }
+    
 }
