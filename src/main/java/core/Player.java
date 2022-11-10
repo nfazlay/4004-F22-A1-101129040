@@ -195,10 +195,10 @@ public class Player implements Serializable {
         }
 
         for (Global.DiceSide d: countMap.keySet()) {
-            if (d != Global.DiceSide.MONKEY && d != Global.DiceSide.PARROT && d != Global.DiceSide.SKULL) {
-                points += Global.identicalPoints.get(countMap.get(d));
-                System.out.println("Added points for sets of " + d + " " + points);
-            }
+            points += Global.identicalPoints.get(countMap.get(d));
+            System.out.println("Added points for sets of " + d + " " + points);
+//            if (d != Global.DiceSide.MONKEY && d != Global.DiceSide.PARROT && d != Global.DiceSide.SKULL) {
+//            }
         }
 
         points += (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)) * 100;
