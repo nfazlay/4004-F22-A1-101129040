@@ -195,6 +195,13 @@ public class PlayerTest {
         points = player.countPoints(dices, player.getCard());
         assertEquals(4800, points);
 
+        player.pickCard(Global.CardTypes.MONKEY_CARD);
+        ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,PARROT,PARROT,PARROT,SKULL,GOLD};
+        dices = Global.createDiceList(ds);
+        
+        points = player.countPoints(dices, player.getCard());
+        assertEquals(1100, points);
+
     }
 
     @Test
