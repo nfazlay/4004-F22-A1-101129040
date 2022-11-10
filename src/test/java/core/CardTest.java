@@ -21,6 +21,9 @@ public class CardTest {
         tc.addDice(d);
         Dice dt = tc.getList().get(0);
         assertEquals(Global.DiceSide.GOLD, dt.getDice());
+
+        tc.removeDice(d);
+        assertTrue(tc.getList().isEmpty());
     }
 
     @Test
