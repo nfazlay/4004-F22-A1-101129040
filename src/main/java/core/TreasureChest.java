@@ -17,6 +17,11 @@ public class TreasureChest extends Card {
     }
 
     @Override
+    public void removeDice (Dice d) {
+        diceArrayList.remove(d);
+    }
+
+    @Override
     public List<Dice> getList () {
         return diceArrayList;
     }

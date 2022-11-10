@@ -15,6 +15,7 @@ public class Card implements Serializable {
     }
 
     public void addDice (Dice d) {}
+    protected void removeDice (Dice d) {}
     protected boolean usedCard;
     protected int numSwords;
     protected int swordPoints;

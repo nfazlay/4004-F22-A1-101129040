@@ -141,6 +141,22 @@ public class Player implements Serializable {
         return true;
     }
 
+    public boolean returnDice (int[] positions) {
+        for (int position : positions) {
+            Dice d = diceArrayList.get(position);
+            if (d.getDice() == Global.DiceSide.SKULL ||
+                    d.setAside == false) {
+                return false;
+            }
+        }
+        for (int position : positions) {
+            Dice d = diceArrayList.get(position);
+            d.setAside = false;
+            card.removeDice(d);
+        }
+        return true;
+    }
+
     public int checkNumSide (List<Dice> list, Global.DiceSide side) {
         int count  = 0;
         for (int i =0; i < list.size(); i ++) {
@@ -174,14 +190,15 @@ public class Player implements Serializable {
                     System.out.println("Added points for full house of " + d);
                 }
             }
-
         }
         return score;
     }
 
     public int countPoints (List diceArray, Card card) {
         if (died(diceArray,card, islandOfSkulls)) {
-            return 0;
+            if (card.getType() != Global.CardTypes.CHEST) {
+                return 0;
+            }
         }
         int points = 0;
         Map<Global.DiceSide, Integer> countMap = Global.countIdentical(diceArray);
@@ -271,8 +288,9 @@ public class Player implements Serializable {
         return true;
     }
 
-    public boolean keepTOChest (Scanner sc) {
-        System.out.print(name +": " + "Please select which dice to set aside. For example: 1 will set aside 1st dice: ");
+    public boolean keepTOChest (Scanner sc, boolean flag) {
+        String s = flag ? "take out" : "set aside";
+        System.out.print(name +": " + "Please select which dice to " + s + ". For example: 1 will " + s + " 1st dice: ");
         try {
             String[] numberStrs = sc.nextLine().split(",");
             int[] numbers = new int[numberStrs.length];
@@ -284,8 +302,8 @@ public class Player implements Serializable {
                 System.out.println(name +": " + "Range should be between 1<=x<=8");
                 return false;
             }
-            else if (!this.setAside(numbers)) {
-                System.out.println(name +": " + "Sorry you are trying to set aside a skull or dice already set aside. Please try again");
+            else if ((flag? !this.setAside(numbers) : !this.returnDice(numbers))) {
+                System.out.println(name +": " + "Sorry you are trying to " + s + " a skull or dice already " + s + ". Please try again");
                 return false;
             }
         } catch (Exception e) {
@@ -318,6 +336,7 @@ public class Player implements Serializable {
     }
 
     public void play () {
+        Boolean isDead = false;
         Scanner sc = new Scanner(System.in);
         System.out.println(name +": " + "Picking a card");
         this.pickCard();
@@ -344,13 +363,19 @@ public class Player implements Serializable {
             }
             System.out.println(name +": " + "Num skulls: " + numSkulls);
             if (died(diceArrayList, card, islandOfSkulls)) { //Turn over because got more skulls
+                isDead = true;
                 break;
             }
             if (cardType == Global.CardTypes.CHEST) { // Keeping dice in chest
                 System.out.print(name +": " + "Do you want set aside dice? \"Yes\" or \"No\" : ");
                 userResponse = sc.nextLine();
                 if (userResponse.equals("Yes")) {
-                    while(!keepTOChest(sc)){}
+                    while(!keepTOChest(sc, true)){}
+                }
+                System.out.print(name +": " + "Do you want set take out dice? \"Yes\" or \"No\" : ");
+                userResponse = sc.nextLine();
+                if (userResponse.equals("Yes")) {
+                    while(!keepTOChest(sc, false)){}
                 }
             }
             System.out.print(name +": " + "Do you want to re-roll the dice? \"Yes\" or \"No\" : ");
@@ -381,7 +406,10 @@ public class Player implements Serializable {
         }
         System.out.println("Previous score: " + score);
         if (!islandOfSkulls) {
-            if (checkSeaBattle(diceArrayList, card)) {
+            if (cardType == Global.CardTypes.CHEST && isDead) {
+                score += countPoints(card.getList(), card);
+            }
+            else if (checkSeaBattle(diceArrayList, card)) {
                 score += countPoints(diceArrayList, card);
             }
             else {
