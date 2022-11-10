@@ -188,13 +188,27 @@ public class Player implements Serializable {
             return 0;
         }
         int points = 0;
-        if(islandOfSkulls) {
-            points = checkNumSide(diceArray, Global.DiceSide.SKULL)*100;
+        Map<Global.DiceSide, Integer> countMap = Global.countIdentical(diceArray);
+
+        if (card.getType() == Global.CardTypes.GOLD_CARD) {
+            countMap.put(Global.DiceSide.GOLD, countMap.get(Global.DiceSide.GOLD) + 1);
         }
-        else {
-            // count number of identical objects
-            // Add to diamond or gold coins
+
+        if (card.getType() == Global.CardTypes.DIAMOND_CARD) {
+            countMap.put(Global.DiceSide.DIAMOND, countMap.get(Global.DiceSide.DIAMOND) + 1);
         }
+
+        for (Global.DiceSide d: countMap.keySet()) {
+            if (d != Global.DiceSide.MONKEY || d != Global.DiceSide.PARROT || d != Global.DiceSide.SKULL) {
+                points += Global.identicalPoints.get(countMap.get(d));
+                System.out.println("Added points for sets of " + d + " " + points);
+            }
+        }
+
+        points += (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)) * 100;
+        System.out.println("Added points for Gold and Diamond " + points + " " +
+                (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)));
+
         if (card.getType() == Global.CardTypes.CAPTAIN) {
             points = points * 2;
             System.out.println("Added points for Captain " + points);
