@@ -71,5 +71,14 @@ public class AcceptanceTests {
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 4800);
     }
 
-
+    @Test
+    public void test52 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.CAPTAIN);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,PARROT,PARROT,GOLD,GOLD,DIAMOND,DIAMOND};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 800);
+    }
 }
