@@ -15,6 +15,7 @@ public class Global {
         put(6, 1000);
         put(7, 2000);
         put(8, 4000);
+        put(9, 4000);
     }};
 
     public static enum CardTypes {
@@ -68,5 +69,15 @@ public class Global {
         System.out.format(format,list.toArray());
 
         return true;
+    }
+
+    public static List<Dice> createDiceList (DiceSide[] ds) {
+        List<Dice> r = new ArrayList<Dice>();
+        for(DiceSide diceSide: ds) {
+            Dice d = new Dice();
+            d.setDice(diceSide);
+            r.add(d);
+        }
+        return r;
     }
 }
