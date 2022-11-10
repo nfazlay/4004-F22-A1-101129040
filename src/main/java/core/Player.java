@@ -160,25 +160,21 @@ public class Player implements Serializable {
         return points;
     }
 
-    public int treasureChestPoints (Card c) {
-        int point = 0;
-        Map<Global.DiceSide, Integer> countMap = Global.countIdentical(c.getList());
-
-        return point;
-    }
 
     public int checkFullHouse (List<Dice> l, Card c) {
         int score = 0;
-        if (checkNumSide(l, Global.DiceSide.SKULL) == 0 ) {
+        if (checkNumSide(l, Global.DiceSide.SKULL) != 0 ) {
             score = 0;
         }
         else {
-            List<Dice> temp = new ArrayList<Dice>();
-            for(Dice d: l) {
-                if (d.getDice() != Global.DiceSide.GOLD || d.getDice() != Global.DiceSide.DIAMOND) {
-                    temp.add(d);
+            Map<Global.DiceSide, Integer> countMap = Global.countIdentical(l);
+            for (Global.DiceSide d: countMap.keySet()) {
+                if (countMap.get(d) == 8) {
+                    score += 500;
+                    System.out.println("Added points for full house of " + d);
                 }
             }
+
         }
         return score;
     }
@@ -199,7 +195,7 @@ public class Player implements Serializable {
         }
 
         for (Global.DiceSide d: countMap.keySet()) {
-            if (d != Global.DiceSide.MONKEY || d != Global.DiceSide.PARROT || d != Global.DiceSide.SKULL) {
+            if (d != Global.DiceSide.MONKEY && d != Global.DiceSide.PARROT && d != Global.DiceSide.SKULL) {
                 points += Global.identicalPoints.get(countMap.get(d));
                 System.out.println("Added points for sets of " + d + " " + points);
             }
@@ -208,6 +204,8 @@ public class Player implements Serializable {
         points += (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)) * 100;
         System.out.println("Added points for Gold and Diamond " + points + " " +
                 (countMap.get(Global.DiceSide.GOLD) + countMap.get(Global.DiceSide.DIAMOND)));
+
+        points += checkFullHouse(diceArray, card);
 
         if (card.getType() == Global.CardTypes.CAPTAIN) {
             points = points * 2;
