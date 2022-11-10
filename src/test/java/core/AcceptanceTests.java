@@ -373,4 +373,35 @@ public class AcceptanceTests {
         p.setDice(dices);
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
     }
+
+    @Test
+    public void test87 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.CHEST);
+        Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,SWORD,SWORD,DIAMOND,DIAMOND,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.setAside(new int[]{5,6,7});
+        p.reRoll(new int[]{3,4}, new Global.DiceSide[]{PARROT, PARROT});
+        p.setAside(new int[]{0,1,2,3,4});
+        p.returnDice(new int[]{5,6,7});
+        p.reRoll(new int[]{5,6,7}, new Global.DiceSide[]{SKULL, GOLD, PARROT});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1100);
+    }
+
+    @Test
+    public void test92 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.CHEST);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,PARROT,PARROT,PARROT,GOLD,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.setAside(new int[]{5,6,7});
+        p.reRoll(new int[]{2,3, 4}, new Global.DiceSide[]{DIAMOND, DIAMOND, GOLD});
+        p.setAside(new int[]{4});
+        p.reRoll(new int[]{2,3}, new Global.DiceSide[]{SKULL, GOLD});
+        assertEquals(p.countPoints(p.getCard().getList(), p.getCard()), 600);
+    }
 }
