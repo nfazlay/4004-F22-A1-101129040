@@ -20,4 +20,41 @@ public class AcceptanceTests {
         p.setDice(dices);
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
     }
+
+    @Test
+    public void test46 () {
+        Player p = new Player("test46");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,PARROT,SKULL,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{5, 6, 7}, new Global.DiceSide[]{SKULL, SKULL, SWORD});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test47 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{SKULL, SWORD});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test48 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{5, 6, 7}, new Global.DiceSide[]{SKULL, MONKEY, MONKEY});
+        p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{SKULL, MONKEY});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
 }
