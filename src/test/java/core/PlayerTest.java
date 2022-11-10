@@ -4,8 +4,7 @@ import core.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static core.Global.DiceSide.SKULL;
-import static core.Global.DiceSide.SWORD;
+import static core.Global.DiceSide.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -189,6 +188,13 @@ public class PlayerTest {
 
         points = player.countPoints(dices, player.getCard());
         assertEquals(0, points);
+
+        ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,SKULL};
+        dices = Global.createDiceList(ds);
+
+        points = player.countPoints(dices, player.getCard());
+        assertEquals(4800, points);
+
     }
 
     @Test
