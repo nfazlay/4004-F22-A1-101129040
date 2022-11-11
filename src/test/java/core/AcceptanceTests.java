@@ -404,4 +404,138 @@ public class AcceptanceTests {
         p.reRoll(new int[]{2,3}, new Global.DiceSide[]{SKULL, GOLD});
         assertEquals(p.countPoints(p.getCard().getList(), p.getCard()), 600);
     }
+
+    @Test
+    public void test97 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,DIAMOND,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 400);
+    }
+
+    @Test
+    public void test98 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.CAPTAIN);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1800);
+    }
+
+    @Test
+    public void test99 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.GOLD_CARD);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,DIAMOND};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1000);
+    }
+
+    @Test
+    public void test100 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(2);
+        p.getCard().setSwordPoints(300);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,PARROT,PARROT,SWORD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{4,5}, new Global.DiceSide[]{GOLD, SWORD});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1200);
+    }
+
+    @Test
+    public void test103 () {
+        Player p = new Player("test47");
+        p.pickCard(Global.CardTypes.MONKEY_CARD);
+        p.getCard().setNumSwords(2);
+        p.getCard().setSwordPoints(300);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,PARROT,GOLD,GOLD,DIAMOND,DIAMOND,DIAMOND};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{4,5}, new Global.DiceSide[]{GOLD, SWORD});
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1200);
+    }
+
+
+    @Test
+    public void test106 () {
+        Player p = new Player("test45");
+        p.pickCard(Global.CardTypes.SKULLS_CARD);
+        p.getCard().setNumSkulls(2);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test107 () {
+        Player p = new Player("test45");
+        p.pickCard(Global.CardTypes.SKULLS_CARD);
+        p.getCard().setNumSkulls(1);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test108 () {
+        Player p = new Player("test45");
+        p.pickCard(Global.CardTypes.SKULLS_CARD);
+        p.getCard().setNumSkulls(2);
+        Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{0,1,2}, new Global.DiceSide[]{SKULL, SKULL, SWORD});
+        p.reRoll(new int[]{2,3,4,5}, new Global.DiceSide[]{SKULL, SKULL, SKULL, SWORD});
+        assertEquals(p.islandOfSkullsPoints(p.getDiceList(), p.getCard()), 900);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test110 () {
+        Player p = new Player("test45");
+        p.pickCard(Global.CardTypes.CAPTAIN);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+
+        p.reRoll(new int[]{5,6,7}, new Global.DiceSide[]{SKULL, SKULL, GOLD});
+        assertEquals(p.islandOfSkullsPoints(p.getDiceList(), p.getCard()), 1400);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test111 () {
+        Player p = new Player("test45");
+        p.pickCard(Global.CardTypes.SKULLS_CARD);
+        p.getCard().setNumSkulls(2);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+
+        p.reRoll(new int[]{3,4,5,6,7}, new Global.DiceSide[]{GOLD, GOLD, GOLD, GOLD, GOLD});
+        assertEquals(p.islandOfSkullsPoints(p.getDiceList(), p.getCard()), 500);
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
 }
