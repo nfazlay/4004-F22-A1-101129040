@@ -169,7 +169,7 @@ public class Player implements Serializable {
 
     public int islandOfSkullsPoints (List diceArray, Card card) {
         int points = 0;
-        points = checkNumSide(diceArray, Global.DiceSide.SKULL)*100;
+        points = (checkNumSide(diceArray, Global.DiceSide.SKULL) + (card.getType() == Global.CardTypes.SKULLS_CARD ? card.getNumSkulls() : 0)) *100;
         if (card.getType() == Global.CardTypes.CAPTAIN) {
             points = points * 2;
         }
@@ -195,7 +195,7 @@ public class Player implements Serializable {
     }
 
     public int countPoints (List diceArray, Card card) {
-        if (died(diceArray,card, islandOfSkulls)) {
+        if (died(this.getDiceList(),card, islandOfSkulls)) {
             if (card.getType() != Global.CardTypes.CHEST) {
                 return 0;
             }
