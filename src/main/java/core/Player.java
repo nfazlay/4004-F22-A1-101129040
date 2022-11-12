@@ -504,7 +504,7 @@ public class Player implements Serializable {
             else {
                 System.out.println("You received less swords. All dices ignored and " + card.getSwordPoints()
                         + " deducted from your score" );
-                score -= card.getSwordPoints();
+                this.deductScore(card.getSwordPoints());
             }
         }
         System.out.println(name + ": Your turn ended. Waiting for other players to finish");
