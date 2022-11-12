@@ -43,6 +43,7 @@ public class PlayerClient implements Runnable{
         sendPacket = new DatagramPacket(bufSend, bufSend.length,
                 ip, port);
         socket.send(sendPacket);
+        System.out.println("Waiting for others turn");
         while (true) { // Send connection request to server
             // Receive player
             byte[] bufReceived = new byte[1024];
