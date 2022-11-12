@@ -187,7 +187,7 @@ public class PlayerTest {
         List<Dice> dices = Global.createDiceList(ds);
 
         points = player.countPoints(dices, player.getCard());
-        assertEquals(0, points);
+        assertEquals(600, points);
 
         ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,SKULL};
         dices = Global.createDiceList(ds);
@@ -286,7 +286,7 @@ public class PlayerTest {
         d8.setDice(Global.DiceSide.MONKEY);
         diceArray.add(d8);
 
-        assertTrue(player.checkSeaBattle(diceArray, c));
+        assertFalse(player.checkSeaBattle(diceArray, c));
     }
 
     @Test
