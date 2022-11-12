@@ -55,7 +55,12 @@ public class PlayerClient implements Runnable{
             player = receivedPlayer;
 
             // Do magic here
-            player.play();
+            if (player.gameover) {
+                System.out.println("Game over. Check server for winner");
+                break;
+            } else {
+                player.play();
+            }
 
             // sending updated player object
             bufSend = Data.toByteArray(player);
@@ -64,6 +69,7 @@ public class PlayerClient implements Runnable{
             socket.send(sendPacket);
             System.out.println("Sent player: " + receivedPlayer.getName() + " to server");
         }
+        closeSocket ();
     }
 
     public void closeSocket () {
