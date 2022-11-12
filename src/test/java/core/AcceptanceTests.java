@@ -13,6 +13,7 @@ public class AcceptanceTests {
     @Test
     public void test45 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SKULL,SKULL,SKULL};
         List<Dice> dices = Global.createDiceList(ds);
@@ -24,6 +25,7 @@ public class AcceptanceTests {
     @Test
     public void test46 () {
         Player p = new Player("test46");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,PARROT,SKULL,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -36,6 +38,7 @@ public class AcceptanceTests {
     @Test
     public void test47 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -48,6 +51,7 @@ public class AcceptanceTests {
     @Test
     public void test48 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,PARROT,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -61,6 +65,7 @@ public class AcceptanceTests {
     @Test
     public void test50 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,SWORD,SWORD,SWORD,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -74,6 +79,7 @@ public class AcceptanceTests {
     @Test
     public void test52 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CAPTAIN);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,PARROT,PARROT,GOLD,GOLD,DIAMOND,DIAMOND};
         List<Dice> dices = Global.createDiceList(ds);
@@ -85,6 +91,7 @@ public class AcceptanceTests {
     @Test
     public void test53 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SKULL,SKULL,SWORD,SWORD,PARROT,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -97,6 +104,7 @@ public class AcceptanceTests {
     @Test
     public void test54 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SKULL,SKULL,SWORD,SWORD,MONKEY,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -108,6 +116,7 @@ public class AcceptanceTests {
     @Test
     public void test55 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{DIAMOND,DIAMOND,DIAMOND,SKULL,SKULL,SWORD,MONKEY,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -119,6 +128,7 @@ public class AcceptanceTests {
     @Test
     public void test56 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.DIAMOND_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,SKULL,SKULL,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -130,6 +140,7 @@ public class AcceptanceTests {
     @Test
     public void test57 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.DIAMOND_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,PARROT,PARROT,PARROT,PARROT,SKULL};
         List<Dice> dices = Global.createDiceList(ds);
@@ -141,6 +152,7 @@ public class AcceptanceTests {
     @Test
     public void test58 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,GOLD,GOLD,PARROT,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -153,6 +165,7 @@ public class AcceptanceTests {
     @Test
     public void test59 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CAPTAIN);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,GOLD,GOLD,PARROT,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -165,6 +178,7 @@ public class AcceptanceTests {
     @Test
     public void test60 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,MONKEY,MONKEY,PARROT,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -178,6 +192,7 @@ public class AcceptanceTests {
     @Test
     public void test62 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL};
         List<Dice> dices = Global.createDiceList(ds);
@@ -189,6 +204,7 @@ public class AcceptanceTests {
     @Test
     public void test63 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,PARROT,PARROT,PARROT,PARROT,SKULL};
         List<Dice> dices = Global.createDiceList(ds);
@@ -200,6 +216,7 @@ public class AcceptanceTests {
     @Test
     public void test64 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -211,6 +228,7 @@ public class AcceptanceTests {
     @Test
     public void test65 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.DIAMOND_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -222,6 +240,7 @@ public class AcceptanceTests {
     @Test
     public void test66 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CAPTAIN);
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -233,6 +252,7 @@ public class AcceptanceTests {
     @Test
     public void test67 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -245,6 +265,7 @@ public class AcceptanceTests {
     @Test
     public void test68 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.DIAMOND_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SKULL,SKULL,SWORD,SWORD,PARROT,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -257,6 +278,7 @@ public class AcceptanceTests {
     @Test
     public void test69 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SKULL,SKULL,SWORD,SWORD,DIAMOND,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -269,6 +291,7 @@ public class AcceptanceTests {
     @Test
     public void test70 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,GOLD,GOLD,MONKEY,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -281,6 +304,7 @@ public class AcceptanceTests {
     @Test
     public void test71 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.DIAMOND_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,GOLD,GOLD,MONKEY,PARROT,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -293,6 +317,7 @@ public class AcceptanceTests {
     @Test
     public void test72 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -304,6 +329,7 @@ public class AcceptanceTests {
     @Test
     public void test77 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SOCERESS);
         Global.DiceSide[] ds = new Global.DiceSide[]{DIAMOND,DIAMOND,SWORD,MONKEY,GOLD,PARROT,PARROT,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -317,6 +343,7 @@ public class AcceptanceTests {
     @Test
     public void test78 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SOCERESS);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,PARROT,PARROT,PARROT,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -330,6 +357,7 @@ public class AcceptanceTests {
     @Test
     public void test79 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SOCERESS);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,PARROT,PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY};
         List<Dice> dices = Global.createDiceList(ds);
@@ -343,6 +371,7 @@ public class AcceptanceTests {
     @Test
     public void test82 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.MONKEY_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,PARROT,PARROT,PARROT,SKULL,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -354,6 +383,7 @@ public class AcceptanceTests {
     @Test
     public void test83 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.MONKEY_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SWORD,SWORD,PARROT,PARROT,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -366,6 +396,7 @@ public class AcceptanceTests {
     @Test
     public void test84 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.MONKEY_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY,PARROT,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -377,6 +408,7 @@ public class AcceptanceTests {
     @Test
     public void test87 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CHEST);
         Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,SWORD,SWORD,DIAMOND,DIAMOND,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -393,6 +425,7 @@ public class AcceptanceTests {
     @Test
     public void test92 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CHEST);
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,PARROT,PARROT,PARROT,GOLD,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -408,6 +441,7 @@ public class AcceptanceTests {
     @Test
     public void test97 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,DIAMOND,PARROT};
         List<Dice> dices = Global.createDiceList(ds);
@@ -419,6 +453,7 @@ public class AcceptanceTests {
     @Test
     public void test98 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CAPTAIN);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,GOLD,GOLD};
         List<Dice> dices = Global.createDiceList(ds);
@@ -430,6 +465,7 @@ public class AcceptanceTests {
     @Test
     public void test99 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.GOLD_CARD);
         Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,DIAMOND};
         List<Dice> dices = Global.createDiceList(ds);
@@ -441,6 +477,7 @@ public class AcceptanceTests {
     @Test
     public void test100 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.BATTLE);
         p.getCard().setNumSwords(2);
         p.getCard().setSwordPoints(300);
@@ -456,6 +493,7 @@ public class AcceptanceTests {
     @Test
     public void test103 () {
         Player p = new Player("test47");
+        p.pickCard();
         p.pickCard(Global.CardTypes.MONKEY_CARD);
         p.getCard().setNumSwords(2);
         p.getCard().setSwordPoints(300);
@@ -464,7 +502,6 @@ public class AcceptanceTests {
         List<Dice> dices = Global.createDiceList(ds);
         p.roll();
         p.setDice(dices);
-        p.reRoll(new int[]{4,5}, new Global.DiceSide[]{GOLD, SWORD});
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1200);
     }
 
@@ -472,6 +509,7 @@ public class AcceptanceTests {
     @Test
     public void test106 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SKULLS_CARD);
         p.getCard().setNumSkulls(2);
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL};
@@ -484,6 +522,7 @@ public class AcceptanceTests {
     @Test
     public void test107 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SKULLS_CARD);
         p.getCard().setNumSkulls(1);
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL,SKULL};
@@ -496,6 +535,7 @@ public class AcceptanceTests {
     @Test
     public void test108 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SKULLS_CARD);
         p.getCard().setNumSkulls(2);
         Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY,SKULL,SKULL};
@@ -511,6 +551,7 @@ public class AcceptanceTests {
     @Test
     public void test110 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.CAPTAIN);
 
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY};
@@ -526,6 +567,7 @@ public class AcceptanceTests {
     @Test
     public void test111 () {
         Player p = new Player("test45");
+        p.pickCard();
         p.pickCard(Global.CardTypes.SKULLS_CARD);
         p.getCard().setNumSkulls(2);
 
@@ -537,5 +579,152 @@ public class AcceptanceTests {
         p.reRoll(new int[]{3,4,5,6,7}, new Global.DiceSide[]{GOLD, GOLD, GOLD, GOLD, GOLD});
         assertEquals(p.islandOfSkullsPoints(p.getDiceList(), p.getCard()), 500);
         assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test114 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(2);
+        p.getCard().setSwordPoints(300);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL,SKULL,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertFalse(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test115 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(3);
+        p.getCard().setSwordPoints(500);
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SKULL,SKULL,PARROT,PARROT,PARROT,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{4,5,6,7}, new Global.DiceSide[]{SKULL, SKULL, SKULL, SKULL});
+        assertFalse(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test116 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(4);
+        p.getCard().setSwordPoints(1000);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,SKULL,SKULL,SKULL,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertFalse(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test117 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(2);
+        p.getCard().setSwordPoints(300);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,GOLD,PARROT,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertTrue(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 500);
+    }
+
+    @Test
+    public void test118 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(2);
+        p.getCard().setSwordPoints(300);
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,SWORD,SKULL,PARROT,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        p.reRoll(new int[]{6,7}, new Global.DiceSide[]{SWORD, SKULL});
+        assertTrue(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 500);
+    }
+
+    @Test
+    public void test120 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(3);
+        p.getCard().setSwordPoints(500);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+
+        assertTrue(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 800);
+    }
+
+    @Test
+    public void test121 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(3);
+        p.getCard().setSwordPoints(500);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,SWORD,SWORD,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+
+        p.reRoll(new int[]{0,1,2,3}, new Global.DiceSide[]{SKULL, SKULL, SWORD, SWORD});
+        assertFalse(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 0);
+    }
+
+    @Test
+    public void test123 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(4);
+        p.getCard().setSwordPoints(1000);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SWORD,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+        assertTrue(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1300);
+    }
+
+    @Test
+    public void test124 () {
+        Player p = new Player("test45");
+        p.pickCard();
+        p.pickCard(Global.CardTypes.BATTLE);
+        p.getCard().setNumSwords(4);
+        p.getCard().setSwordPoints(1000);
+
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SKULL,DIAMOND,PARROT,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+
+        p.reRoll(new int[]{6,7}, new Global.DiceSide[]{SWORD, SWORD});
+        p.reRoll(new int[]{0,1,2}, new Global.DiceSide[]{SWORD, PARROT, PARROT});
+        assertTrue(p.checkSeaBattle(p.getDiceList(), p.getCard()));
+        assertEquals(p.countPoints(p.getDiceList(), p.getCard()), 1300);
     }
 }
