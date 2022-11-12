@@ -1,4 +1,5 @@
 package core;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -9,6 +10,8 @@ public class Player implements Serializable {
     private Card card = null;
     private int score;
     public int lastScore;
+    public boolean rigged = false;
+    public boolean gameover = false;
 
     String userResponse;
     public Player (String name) {
@@ -91,7 +94,7 @@ public class Player implements Serializable {
     }
 
     public void deductScore (int s) {
-        this.score = this.score - s;
+        this.score = this.score == 0 ? 0 : this.score - s;
     }
 
     public void setIslandOfSkulls (boolean b) {
@@ -178,19 +181,47 @@ public class Player implements Serializable {
 
 
     public int checkFullHouse (List<Dice> l, Card c) {
+        int numDicePoints = 0;
         int score = 0;
         if (checkNumSide(l, Global.DiceSide.SKULL) != 0 ) {
             score = 0;
         }
         else {
             Map<Global.DiceSide, Integer> countMap = Global.countIdentical(l);
+            System.out.println(countMap);
             for (Global.DiceSide d: countMap.keySet()) {
-                if (countMap.get(d) == 8) {
-                    score += 500;
-                    System.out.println("Added points for full house of " + d);
+                if (countMap.get(d) < 3) {
+                    if (d == Global.DiceSide.GOLD || d == Global.DiceSide.DIAMOND) {
+                        System.out.print(d);
+                        System.out.println(countMap.get(d));
+                        numDicePoints += countMap.get(d);
+                    } else if (d == Global.DiceSide.SWORD) {
+                        if (card.getType() == Global.CardTypes.BATTLE) {
+                            if (card.getNumSwords() == countMap.get(d)) {
+                                numDicePoints += countMap.get(d);
+                            }
+                        }
+                    } else if (d == Global.DiceSide.MONKEY || d == Global.DiceSide.PARROT) {
+                        if (card.getType() == Global.CardTypes.MONKEY_CARD) {
+                            if (countMap.get(Global.DiceSide.MONKEY) + countMap.get(Global.DiceSide.PARROT) >= 3) {
+                                numDicePoints += countMap.get(Global.DiceSide.MONKEY) + countMap.get(Global.DiceSide.PARROT);
+                                countMap.put(d == Global.DiceSide.MONKEY? Global.DiceSide.PARROT: Global.DiceSide.MONKEY, 0);
+                            }
+                        }
+                    }
+                }
+                else {
+                    System.out.print(d);
+                    System.out.println(countMap.get(d));
+                    numDicePoints += countMap.get(d);
                 }
             }
+            if (numDicePoints >= 8) {
+                score += 500;
+                System.out.println("Added points for full house");
+            }
         }
+        System.out.println(numDicePoints);
         return score;
     }
 
@@ -235,6 +266,10 @@ public class Player implements Serializable {
 
         points += checkFullHouse(diceArray, card);
 
+        if (card.getType() == Global.CardTypes.BATTLE && checkSeaBattle(diceArray, card)) {
+            points += card.getSwordPoints();
+        }
+
         if (card.getType() == Global.CardTypes.CAPTAIN) {
             points = points * 2;
             System.out.println("Added points for Captain " + points);
@@ -245,7 +280,9 @@ public class Player implements Serializable {
     public boolean checkSeaBattle (List<Dice> l, Card card) {
         if (card.getType() == Global.CardTypes.BATTLE) {
             int numSword = checkNumSide(l, Global.DiceSide.SWORD);
-            if (card.getNumSwords() != numSword) {
+            if (card.getNumSwords() > numSword || died(l, card, false)) {
+                System.out.println(name + ": " + "Did not receive correct swords or died. Losing "
+                        + card.getSwordPoints() + " points");
                 return false;
             }
         }
@@ -313,6 +350,34 @@ public class Player implements Serializable {
         return true;
     }
 
+    public boolean riggedRoll (Scanner sc) {
+        Global.DiceSide[] diceSideArray = Global.DiceSide.values();
+        System.out.print(name +": " + "Please select sequence of dice: " + Arrays.toString(diceSideArray));
+        List<Dice> dl = new ArrayList<>();
+        try {
+            String[] numberStrs = sc.nextLine().split(",");
+            int[] numbers = new int[numberStrs.length];
+            for (int i = 0; i < numberStrs.length; i++) {
+                numbers[i] = Integer.parseInt(numberStrs[i]);
+            }
+            if (numbers.length < 8) {
+                System.out.println(name +": " + "8 dices required");
+                return false;
+            } else {
+                for (int i: numbers) {
+                    Dice d = new Dice();
+                    d.setDice(diceSideArray[i]);
+                    dl.add(d);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(name +": " + "Please try again");
+            return false;
+        }
+        diceArrayList = dl;
+        return true;
+    }
+
     public boolean rollPlay (Scanner sc) {
         System.out.print(name +": " + "Please select which dice to re-roll. For example: 1,3,4,5 will roll 1st, 3rd, 4th and 5th dice: ");
         try {
@@ -336,14 +401,32 @@ public class Player implements Serializable {
     }
 
     public void play () {
+        System.out.println(name + ": Your turn start");
         Boolean isDead = false;
         Scanner sc = new Scanner(System.in);
         System.out.println(name +": " + "Picking a card");
-        this.pickCard();
+        if (rigged) {
+            System.out.println("Please select card " + Arrays.toString(Global.CardTypes.values()));
+            int idx = Integer.parseInt(sc.nextLine());
+            this.pickCard(Global.CardTypes.values()[idx]);
+            if (this.card.getType() == Global.CardTypes.SKULLS_CARD) {
+                System.out.println("Please select num skulls");
+                int numSkulls = Integer.parseInt(sc.nextLine());
+                this.card.setNumSkulls(numSkulls);
+            }
+        }
+        else {
+            this.pickCard();
+        }
         Global.CardTypes cardType = card.getType();
         System.out.println(name +": " + "Card picked: " + this.getCard());
         System.out.println(name +": " + "Rolling the first dice");
-        this.roll();
+        if (rigged) {
+            this.riggedRoll(sc);
+        }
+        else {
+            this.roll();
+        }
         Global.printDiceList(diceArrayList);
         int numSkulls = checkNumSide(diceArrayList, Global.DiceSide.SKULL) + (cardType == Global.CardTypes.SKULLS_CARD? card.getNumSkulls() : 0);
         if (numSkulls > 3 && cardType != Global.CardTypes.BATTLE) {
@@ -357,7 +440,7 @@ public class Player implements Serializable {
                 userResponse = sc.nextLine();
                 if (userResponse.equals("Yes")) {
                     card.usedCard = true;
-                    while(!rollSorceres(sc, diceArrayList)) {}
+                    while(rigged? !this.riggedRoll(sc) :!rollSorceres(sc, diceArrayList)) {}
                     Global.printDiceList(diceArrayList);
                 }
             }
@@ -383,7 +466,7 @@ public class Player implements Serializable {
             if (userResponse.equals("Yes")) {
                 if (islandOfSkulls) {
                     System.out.println(name +": " + "Playing Island of skulls");
-                    if (this.rollPlay(sc)) {
+                    if (rigged? this.riggedRoll(sc) : this.rollPlay(sc)) {
                         System.out.println(name +": " + "Rolled inside island of dice");
                         int newNumSkulls = checkNumSide(diceArrayList, Global.DiceSide.SKULL);
                         if (!(newNumSkulls > numSkulls)) {
@@ -394,10 +477,16 @@ public class Player implements Serializable {
                     }
                 }
                 else {
-                    this.rollPlay(sc);
+                    if (rigged) {
+                        this.riggedRoll(sc);
+                    }
+                    else {
+                        this.rollPlay(sc);
+                    }
                 }
             }
             else {
+                lastScore = islandOfSkullsPoints(diceArrayList, card);
                 Global.printDiceList(diceArrayList);
                 break;
             }
@@ -418,6 +507,7 @@ public class Player implements Serializable {
                 score -= card.getSwordPoints();
             }
         }
+        System.out.println(name + ": Your turn ended. Waiting for other players to finish");
         System.out.println(name + ": " + "Your score is: " + score);
         System.out.println("");
     }
