@@ -20,7 +20,7 @@ public class Card implements Serializable {
     protected int numSwords;
     protected int swordPoints;
     protected int numSkulls;
-    protected void setNumSkulls(int s) {}
+    public void setNumSkulls(int s) {}
     protected int getNumSkulls() {return -1;}
     protected int getNumSwords() {return -1;}
     protected int getSwordPoints() {return -1;}
