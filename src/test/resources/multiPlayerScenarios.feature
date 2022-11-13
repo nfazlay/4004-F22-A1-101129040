@@ -21,7 +21,7 @@ Feature: run the multiplayer acceptance test cases
       Then I find that "Player 1" is the winner
       And close server
 
-    Scenario: row134
+    Scenario: Row134
       Given That the server is initiated
       And Three players are added
       And Player 1 picks FC CAPTAIN
