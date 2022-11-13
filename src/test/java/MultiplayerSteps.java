@@ -55,7 +55,7 @@ public class MultiplayerSteps {
     public void playerPicksFCSKULL(int arg0, int arg1) {
         gs.players.get(arg0-1).pickCard();
         gs.players.get(arg0 -1).pickCard(Global.CardTypes.SKULLS_CARD);
-        gs.players.get(arg0 -1).getCard().setNumSkulls(1);
+        gs.players.get(arg0 -1).getCard().setNumSkulls(arg1);
     }
 
     @And("Player {int} rolls 7 swords and 1 skull")
@@ -130,5 +130,44 @@ public class MultiplayerSteps {
         Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
         gs.players.get(arg0 -1).setDice(dices);
+    }
+
+    @And("Player {int} rolls 6 swords and 2 skulls")
+    public void playerRollsSwordsAndSkulls(int arg0) {
+        gs.players.get(arg0 -1).roll();
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        gs.players.get(arg0 -1).setDice(dices);
+    }
+
+    @And("Player {int} picks FC SORCERESS")
+    public void playerPicksFCSORCERESS(int arg0) {
+        gs.players.get(arg0 -1).pickCard();
+        gs.players.get(arg0 -1).pickCard(Global.CardTypes.SOCERESS);
+    }
+
+    @And("Player {int} rolls 7 skull and 1 coin")
+    public void playerRollsSkullAndCoin(int arg0) {
+        gs.players.get(arg0 -1).roll();
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SKULL,SKULL,SKULL,SKULL,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        gs.players.get(arg0 -1).setDice(dices);
+    }
+
+    @And("Player {int} rerolls 1 skull to parrot using Sorceress")
+    public void playerRerollsSkullToParrotUsingSorceress(int arg0) {
+        gs.players.get(arg0 -1).reRoll(new int[]{0}, new Global.DiceSide[]{PARROT});
+        gs.players.get(arg0 -1).getCard().usedCard = true;
+    }
+
+    @And("Player {int} rerolls coin and parrot to get two skulls")
+    public void playerRerollsCoinAndParrotToGetTwoSkulls(int arg0) {
+        gs.players.get(arg0 -1).reRoll(new int[]{0, 7}, new Global.DiceSide[]{SKULL, SKULL});
+        gs.players.get(arg0 -1).getCard().usedCard = true;
+    }
+
+    @And("Player {int} sets islandOfSkulls points")
+    public void playerSetsIslandOfSkullsPoints(int arg0) {
+        scoreToDeduct = gs.players.get(arg0 -1).islandOfSkullsPoints(gs.players.get(arg0 -1).getDiceList(), gs.players.get(arg0 -1).getCard());
     }
 }

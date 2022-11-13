@@ -10,7 +10,7 @@ public class GameServer implements Runnable {
     private DatagramPacket receivePacket, sendPacket;
     byte[] bufSend, bufReceived;
     private List<DatagramPacket> clients = new ArrayList<DatagramPacket>(3);
-    private List<Player> players = new ArrayList<Player>(3);
+    public List<Player> players = new ArrayList<Player>(3);
     private int checkWin = 0;
 
     public GameServer (int port) throws SocketException {
