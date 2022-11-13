@@ -51,8 +51,8 @@ public class MultiplayerSteps {
         gs.players.get(arg0 -1).pickCard(Global.CardTypes.CAPTAIN);
     }
 
-    @And("Player {int} picks FC SKULL 1")
-    public void playerPicksFCSKULL(int arg0) {
+    @And("Player {int} picks FC SKULL {int}")
+    public void playerPicksFCSKULL(int arg0, int arg1) {
         gs.players.get(arg0-1).pickCard();
         gs.players.get(arg0 -1).pickCard(Global.CardTypes.SKULLS_CARD);
         gs.players.get(arg0 -1).getCard().setNumSkulls(1);
@@ -120,6 +120,14 @@ public class MultiplayerSteps {
     public void playerRollsMonkeysAndParrots(int arg0) {
         gs.players.get(arg0 -1).roll();
         Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SKULL,SKULL,SKULL,MONKEY,MONKEY};
+        List<Dice> dices = Global.createDiceList(ds);
+        gs.players.get(arg0 -1).setDice(dices);
+    }
+
+    @And("Player {int} rolls 8 swords")
+    public void playerRollsSwords(int arg0) {
+        gs.players.get(arg0 -1).roll();
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
         List<Dice> dices = Global.createDiceList(ds);
         gs.players.get(arg0 -1).setDice(dices);
     }

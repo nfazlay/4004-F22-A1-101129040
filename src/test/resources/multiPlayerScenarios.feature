@@ -40,5 +40,19 @@ Feature: run the multiplayer acceptance test cases
       Then I find that "Player 1" is the winner
       And close server
 
-
+  Scenario: Row142
+    Given That the server is initiated
+    And Three players are added
+    And Player 1 picks FC CAPTAIN
+    And Player 1 rolls 3 skulls and 5 monkeys
+    And Player 2 picks FC CAPTAIN
+    And Player 2 rolls 7 swords and 1 skull
+    And Player 3 picks FC SKULL 1
+    And Player 3 rolls 7 swords and 1 skull
+    And Player 1 picks FC CAPTAIN
+    And Player 1 rolls 8 swords
+    And Calculate score of all players
+    And find winner
+    Then I find that "Player 1" is the winner
+    And close server
 
