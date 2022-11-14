@@ -66,4 +66,14 @@ public class SinglePlayerSteps {
     public void playerRerollsTwoSWORDSGetOneSKULLAndOneSWORD() {
         p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{SKULL, SWORD});
     }
+
+    @And("Player rerolls three SWORDS, get one SKULL and two MONKEY")
+    public void playerRerollsThreeSWORDSGetOneSKULLAndOneMONKEY() {
+        p.reRoll(new int[]{5,6,7}, new Global.DiceSide[]{SKULL, MONKEY, MONKEY});
+    }
+
+    @And("Player rerolls two MONKEYS, get one SKULL and one MONKEY")
+    public void playerRerollsTwoMONKEYSGetOneSKULLAndOneMONKEY() {
+        p.reRoll(new int[]{6,7}, new Global.DiceSide[]{SKULL, MONKEY});
+    }
 }
