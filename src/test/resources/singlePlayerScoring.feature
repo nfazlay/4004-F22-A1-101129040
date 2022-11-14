@@ -90,27 +90,27 @@ Feature: run the single acceptance test cases
 
   Scenario: Row60
     Given That a player is initialized
-    When Player picks CAPTAIN card
+    When Player picks GOLD card
     And Player rolls one SKULL and two MONKEY and two PARROTS and three SWORDS
     And Player rerolls two MONKEYS, get one SKULL and one SWORD
-    And Player rerolls two MONKEYS, get one SWORD and one MONKEY
+    And Player rerolls two PARROTS, get one SWORD and one MONKEY
     Then PLayer scores 600
 
   Scenario: Row62
     Given That a player is initialized
-    When Player picks CAPTAIN card
+    When Player picks GOLD card
     And Player rolls six MONKEYS and two SKULL
     Then PLayer scores 1100
 
   Scenario: Row63
     Given That a player is initialized
-    When Player picks CAPTAIN card
+    When Player picks GOLD card
     And Player rolls seven PARROTS and one SKULL
     Then PLayer scores 2100
 
   Scenario: Row64
     Given That a player is initialized
-    When Player picks CAPTAIN card
+    When Player picks GOLD card
     And Player rolls eight GOLD COINS
     Then PLayer scores 5400
 
@@ -136,6 +136,6 @@ Feature: run the single acceptance test cases
   Scenario: Row68
     Given That a player is initialized
     When Player picks DIAMOND
-    And Player rolls six MONKEYS and two SWORDS
-    And Player rerolls two SWORDS, get two MONKEYS
+    And Player rolls two MONKEYS and two SKULLS and two SWORDS and two PARROTS
+    And Player rerolls two PARROTS, get two DIAMOND
     Then PLayer scores 400
