@@ -139,3 +139,30 @@ Feature: run the single acceptance test cases
     And Player rolls two MONKEYS and two SKULLS and two SWORDS and two PARROTS
     And Player rerolls two PARROTS, get two DIAMOND
     Then PLayer scores 400
+
+  Scenario: Row69
+    Given That a player is initialized
+    When Player picks GOLD card
+    And Player rolls two MONKEYS and two SKULLS and two SWORDS and one DIAMOND and one PARROT
+    And Player rerolls two MONKEYS, get two DIAMONDS
+    Then PLayer scores 500
+
+  Scenario: Row70
+    Given That a player is initialized
+    When Player picks GOLD card
+    And Player rolls one SKULL and two GOLD COIN and one MONKEY and one PARROT and three SWORDS
+    And Player rerolls three SWORDS, get one GOLD COIN and one MONKEY and one PARROT
+    Then PLayer scores 600
+
+  Scenario: Row71
+    Given That a player is initialized
+    When Player picks DIAMOND
+    And Player rolls one SKULL and two GOLD COIN and one MONKEY and one PARROT and three SWORDS
+    And Player rerolls three SWORDS, get one GOLD COIN and one MONKEY and one PARROT
+    Then PLayer scores 500
+
+  Scenario: Row72
+    Given That a player is initialized
+    When Player picks GOLD card
+    And Player rolls four MONKEYS and two COINS and two SKULLS
+    Then PLayer scores 600
