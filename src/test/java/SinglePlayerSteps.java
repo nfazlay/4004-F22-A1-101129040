@@ -126,4 +126,118 @@ public class SinglePlayerSteps {
     public void playerRerollsTwoPARROTSGetOneSWORDAndOneMONKEY() {
         p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{SWORD, MONKEY});
     }
+
+    @And("Player rolls three MONKEYS and three SWORDS and two SKULLS")
+    public void playerRollsThreeMONKEYSAndThreeSWORDSAndTwoSKULLS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,SWORD,SWORD,SWORD,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls three DIAMONDS and two SKULLS and one MONKEY and one SWORD and one PARROT")
+    public void playerRollsThreeDIAMONDSAndTwoSKULLSAndOneMONKEYAndOneSWORDAndOnePARROT() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{DIAMOND,DIAMOND,DIAMOND,SKULL,SKULL,MONKEY,SWORD,PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @When("Player picks DIAMOND")
+    public void playerPicksDIAMOND() {
+        p.pickCard();
+        p.pickCard(DIAMOND_CARD);
+    }
+
+    @And("Player rolls four GOLD COIN and two SKULLS and two SWORDS")
+    public void playerRollsFourGOLDCOINAndTwoSKULLSAndTwoSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,SKULL,SKULL,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls three SWORDS and four PARROTS and one SKULL")
+    public void playerRollsThreeSWORDSAndFourPARROTSAndOneSKULL() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,PARROT,PARROT,PARROT,PARROT,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls one SKULL and two GOLD COIN and two PARROTS and three SWORDS")
+    public void playerRollsOneSKULLAndTwoGOLDCOINAndTwoPARROTSAndThreeSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,GOLD,GOLD,PARROT,PARROT,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rerolls two PARROTS, get one SWORD and one GOLD COIN")
+    public void playerRerollsTwoPARROTSGetOneSWORDAndOneGOLDCOIN() {
+        p.reRoll(new int[]{3, 4}, new Global.DiceSide[]{SWORD, GOLD});
+    }
+
+    @And("Player rolls one SKULL and two MONKEY and two PARROTS and three SWORDS")
+    public void playerRollsOneSKULLAndTwoMONKEYAndTwoPARROTSAndThreeSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,MONKEY,MONKEY,SWORD,SWORD,SWORD, PARROT, PARROT};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rerolls two MONKEYS, get one SKULL and one SWORD")
+    public void playerRerollsTwoMONKEYSGetOneSKULLAndOneSWORD() {
+        p.reRoll(new int[]{1, 2}, new Global.DiceSide[]{SKULL, SWORD});
+    }
+
+    @And("Player rolls six MONKEYS and two SKULL")
+    public void playerRollsSixMONKEYSAndTwoSKULL() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls seven PARROTS and one SKULL")
+    public void playerRollsSevenPARROTSAndOneSKULL() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,PARROT,PARROT,PARROT,PARROT,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls eight GOLD COINS")
+    public void playerRollsEightGOLDCOINS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD,GOLD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls eight SWORDS")
+    public void playerRollsEightSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls six MONKEYS and two SWORDS")
+    public void playerRollsSixMONKEYSAndTwoSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,MONKEY,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rerolls two SWORDS, get two MONKEYS")
+    public void playerRerollsTwoSWORDSGetTwoMONKEYS() {
+        p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{MONKEY, MONKEY});
+    }
+
+    @And("Player rerolls two PARROTS, get two DIAMOND")
+    public void playerRerollsTwoPARROTSGetTwoDIAMOND() {
+        p.reRoll(new int[]{6, 7}, new Global.DiceSide[]{DIAMOND, DIAMOND});
+    }
 }
