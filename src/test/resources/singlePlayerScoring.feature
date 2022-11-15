@@ -13,7 +13,6 @@ Feature: run the single acceptance test cases
     And Player rerolls three SWORDS, get two SKULLS and one SWORD
     Then PLayer dies with score 0
 
-
   Scenario: Row47
     Given That a player is initialized
     When Player picks GOLD card
@@ -230,3 +229,33 @@ Feature: run the single acceptance test cases
     And Player rerolls two DIAMONDS, gets one SKULL and one GOLD COIN
     Then PLayer scores 600 from chest
 
+  Scenario: Row97
+    Given That a player is initialized
+    When Player picks GOLD card
+    And Player rolls three MONKEYS and three SWORDS and one DIAMOND and one PARROT
+    Then PLayer scores 400
+
+  Scenario: Row98
+    Given That a player is initialized
+    When Player picks CAPTAIN card
+    And Player rolls three MONKEYS and three SWORDS and two GOLD COINS
+    Then PLayer scores 1800
+
+  Scenario: Row99
+    Given That a player is initialized
+    When Player picks GOLD card
+    And Player rolls three MONKEYS and four SWORDS and one DIAMOND
+    Then PLayer scores 1000
+
+  Scenario: Row100
+    Given That a player is initialized
+    When Player picks BATTLE 2 300
+    And Player rolls four MONKEYS and one SWORD and two PARROTS and one GOLD COIN
+    And Player rerolls two PARROTS, get one GOLD COIN and one SWORD
+    Then PLayer scores 1200
+
+  Scenario: Row103
+    Given That a player is initialized
+    When Player picks MONKEY
+    And Player rolls two MONKEYS and one PARROT and two COIN and three DIAMONDS
+    Then PLayer scores 1200
