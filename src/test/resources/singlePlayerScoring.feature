@@ -259,3 +259,38 @@ Feature: run the single acceptance test cases
     When Player picks MONKEY
     And Player rolls two MONKEYS and one PARROT and two COIN and three DIAMONDS
     Then PLayer scores 1200
+
+  Scenario: Skulls Island and Skull Fortune Cards Row106
+    Given That a player is initialized
+    When Player picks SKULL 2
+    And Player rolls one SKULL and seven SWORDS
+    Then PLayer dies with score 0
+
+  Scenario: Skulls Island and Skull Fortune Cards Row107
+    Given That a player is initialized
+    When Player picks SKULL 1
+    And Player rolls two SKULL and six SWORDS
+    Then PLayer dies with score 0
+
+  Scenario: Skulls Island and Skull Fortune Cards Row108
+    Given That a player is initialized
+    When Player picks SKULL 2
+    And Player rolls two SKULL and three PARROTS and three MONKEYS
+    And Player rerolls three PARROTS, get two SKULLS and one SWORD
+    And Player rerolls one SWORD and threee MONKEYS, get three SKULL and one COIN
+    Then Other players lose 900 points
+    And PLayer dies with score 0
+
+  Scenario: Skulls Island and Skull Fortune Cards Row110
+    Given That a player is initialized
+    When Player picks CAPTAIN card
+    And Player rolls five SKULL and three MONKEYS
+    And Player rerolls three MONKEYS, get two SKULLS and one COIN
+    Then Other players lose 1400 points
+
+  Scenario: Skulls Island and Skull Fortune Cards Row111
+    Given That a player is initialized
+    When Player picks SKULL 2
+    And Player rolls three SKULL and five SWORDS
+    And Player rerolls five SWORDS, get five GOLD COIN
+    Then Other players lose 500 points
