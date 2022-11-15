@@ -493,4 +493,77 @@ public class SinglePlayerSteps {
         p.roll();
         p.setDice(dices);
     }
+
+    @When("Player picks SKULL {int}")
+    public void playerPicksSKULL(int arg0) {
+        p.pickCard();
+        p.pickCard(SKULLS_CARD);
+        p.getCard().setNumSkulls(arg0);
+    }
+
+    @And("Player rolls one SKULL and seven SWORDS")
+    public void playerRollsOneSKULLAndSevenSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls two SKULL and six SWORDS")
+    public void playerRollsTwoSKULLAndSixSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rolls two SKULL and three PARROTS and three MONKEYS")
+    public void playerRollsTwoSKULLAndThreePARROTSAndThreeMONKEYS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{PARROT,PARROT,PARROT,MONKEY,MONKEY,MONKEY,SKULL,SKULL};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+
+    @And("Player rerolls three PARROTS, get two SKULLS and one SWORD")
+    public void playerRerollsThreePARROTSGetTwoSKULLSAndOneSWORD() {
+        p.reRoll(new int[]{0,1,2}, new Global.DiceSide[]{SKULL, SKULL, SWORD});
+    }
+
+    @And("Player rerolls one SWORD and threee MONKEYS, get three SKULL and one COIN")
+    public void playerRerollsOneSWORDAndThreeeMONKEYSGetThreeSKULLAndOneCOIN() {
+        p.reRoll(new int[]{2,3,4,5}, new Global.DiceSide[]{SKULL, SKULL, SKULL, SWORD});
+    }
+
+    @Then("Other players lose {int} points")
+    public void otherPlayersLosePoints(int arg0) {
+        assertEquals(p.islandOfSkullsPoints(p.getDiceList(), p.getCard()), arg0);
+    }
+
+    @And("Player rolls five SKULL and three MONKEYS")
+    public void playerRollsFiveSKULLAndThreeMONKEYS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SKULL,SKULL,MONKEY,MONKEY,MONKEY};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rerolls three MONKEYS, get two SKULLS and one COIN")
+    public void playerRerollsThreeMONKEYSGetTwoSKULLSAndOneCOIN() {
+        p.reRoll(new int[]{5,6,7}, new Global.DiceSide[]{SKULL, SKULL, GOLD});
+    }
+
+    @And("Player rolls three SKULL and five SWORDS")
+    public void playerRollsThreeSKULLAndFiveSWORDS() {
+        Global.DiceSide[] ds = new Global.DiceSide[]{SKULL,SKULL,SKULL,SWORD,SWORD,SWORD,SWORD,SWORD};
+        List<Dice> dices = Global.createDiceList(ds);
+        p.roll();
+        p.setDice(dices);
+    }
+
+    @And("Player rerolls five SWORDS, get five GOLD COIN")
+    public void playerRerollsFiveSWORDSGetFiveGOLDCOIN() {
+        p.reRoll(new int[]{3,4,5,6,7}, new Global.DiceSide[]{GOLD, GOLD, GOLD, GOLD, GOLD});
+    }
 }
