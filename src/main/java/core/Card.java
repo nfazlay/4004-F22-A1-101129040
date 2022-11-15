@@ -23,9 +23,9 @@ public class Card implements Serializable {
     public void setNumSkulls(int s) {}
     protected int getNumSkulls() {return -1;}
     protected int getNumSwords() {return -1;}
-    protected int getSwordPoints() {return -1;}
-    protected void setNumSwords(int n) {}
-    protected void setSwordPoints(int n) {}
+    public int getSwordPoints() {return -1;}
+    public void setNumSwords(int n) {}
+    public void setSwordPoints(int n) {}
 
     public List<Dice> getList() {
         return null;
