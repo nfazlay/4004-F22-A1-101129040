@@ -22,7 +22,7 @@ public class MultiplayerSteps {
 
     @Given("That the server is initiated")
     public void thatTheServerIsInitiated() throws SocketException {
-        gs = new GameServer(8080);
+        gs = new GameServer(8081);
     }
 
     @And("Three players are added")
