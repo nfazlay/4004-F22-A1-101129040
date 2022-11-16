@@ -166,7 +166,7 @@ Feature: run the single acceptance test cases
     And Player rolls four MONKEYS and two COINS and two SKULLS
     Then PLayer scores 600
 
-  Scenario: Row77
+  Scenario: Sorceress Row77
     Given That a player is initialized
     When Player picks SORCERESS
     And Player rolls two DIAMONDS and one SWORD and one MONKEY and one COIN and three PARROTS
@@ -174,7 +174,7 @@ Feature: run the single acceptance test cases
     And Player rerolls one SKULL, get one MONKEY
     Then PLayer scores 500
 
-  Scenario: Row78
+  Scenario: Sorceress Row78
     Given That a player is initialized
     When Player picks SORCERESS
     And Player rolls three SKULLS and three PARROTS and two SWORDS
@@ -182,7 +182,7 @@ Feature: run the single acceptance test cases
     And Player rerolls two SWORDS, get two PARROTS
     Then PLayer scores 1000
 
-  Scenario: Row79
+  Scenario: Sorceress Row79
     Given That a player is initialized
     When Player picks SORCERESS
     And Player rolls one SKULL and four PARROTS and three MONKEYS
@@ -190,26 +190,26 @@ Feature: run the single acceptance test cases
     And Player rerolls one SKULL and get one PARROT
     Then PLayer scores 2000
 
-  Scenario: Row82
+  Scenario: Monkey Row82
     Given That a player is initialized
     When Player picks MONKEY
     And Player rolls three MONKEYS and three PARROTS and one SKULL and one GOLD COIN
     Then PLayer scores 1100
 
-  Scenario: Row83
+  Scenario: Monkey Row83
     Given That a player is initialized
     When Player picks MONKEY
     And Player rolls two MONKEYS and two SWORDS and two PARROTS and GOLD COIN
     And Player rerolls two SWORDS, get one MONKEY and one PARROT
     Then PLayer scores 1700
 
-  Scenario: Row84
+  Scenario: Monkey Row84
     Given That a player is initialized
     When Player picks MONKEY
     And Player rolls three SKULLS and three MONKEYS and two PARROT
     Then PLayer dies with score 0
 
-  Scenario: Row87
+  Scenario: Treasure Chest Row87
     Given That a player is initialized
     When Player picks CHEST
     And Player rolls three PARROTS and two SWORDS and two DIAMONDS and one COIN
@@ -219,7 +219,7 @@ Feature: run the single acceptance test cases
     And Player rerolls two DIAMONDS and one GOLD COIN, gets one SKULL and one GOLD COIN and one PARROT
     Then PLayer scores 1100
 
-  Scenario: Row92
+  Scenario: Treasure Chest Row92
     Given That a player is initialized
     When Player picks CHEST
     And Player rolls two SKULLS and three PARROTS and three COINS
