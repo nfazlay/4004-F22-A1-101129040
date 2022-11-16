@@ -294,3 +294,63 @@ Feature: run the single acceptance test cases
     And Player rolls three SKULL and five SWORDS
     And Player rerolls five SWORDS, get five GOLD COIN
     Then Other players lose 500 points
+
+  Scenario: Sea Battles Row114
+    Given That a player is initialized
+    When Player picks SWORDS 2 300
+    And Player rolls four MONKEYS and three SKULLS and one SWORD
+    Then Player lose 300 points and die
+
+  Scenario: Sea Battles Row115
+    Given That a player is initialized
+    When Player picks SWORDS 3 500
+    And Player rolls two SWORDS and two SKULLS and four PARROTS
+    And Player rerolls four PARROTS, gets four SKULLS
+    Then Player lose 500 points and die
+
+  Scenario: Sea Battles Row116
+    Given That a player is initialized
+    When Player picks SWORDS 4 1000
+    And Player rolls two MONKEYS and three SKULLS and three SWORDS
+    Then Player lose 1000 points and die
+
+  Scenario: Sea Battles Row117
+    Given That a player is initialized
+    When Player picks SWORDS 2 300
+    And Player rolls three MONKEYS and two SWORDS and one GOLD COIN and two PARROTS
+    Then PLayer scores 500
+
+  Scenario: Sea Battles Row118
+    Given That a player is initialized
+    When Player picks SWORDS 2 300
+    And Player rolls four MONKEYS and one SWORD and one SKULL and two PARROTS
+    And Player rerolls two PARROTS, gets one SWORD and one SKULL
+    Then PLayer scores 500
+
+  Scenario: Sea Battles Row120
+    Given That a player is initialized
+    When Player picks SWORDS 3 500
+    And Player rolls three MONKEYS and four SWORDS and one SKULL
+    Then PLayer scores 800
+
+  Scenario: Sea Battles Row121
+    Given That a player is initialized
+    When Player picks SWORDS 3 500
+    And Player rolls four MONKEYS and two SWORDS and two SKULLS
+    And Player rerolls four MONKEYS, gets two SKULLS and two SWORDS
+    Then Player lose 500 points and die
+
+  Scenario: Sea Battles Row123
+    Given That a player is initialized
+    When Player picks SWORDS 4 1000
+    And Player rolls three MONKEYS and four SWORDS and one SKULL
+    Then PLayer scores 1300
+
+  Scenario: Sea Battles Row124
+    Given That a player is initialized
+    When Player picks SWORDS 4 1000
+    And Player rolls three MONKEYS and one SWORD and one SKULL ans one DIAMOND and two PARROTS
+    And Player rerolls two PARROTS, gets two SWORDS
+    And Player rerolls three MONKEYS, get one SWORD and two PARROTS
+    Then PLayer scores 1300
+
